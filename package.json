@@ -1,0 +1,12 @@
+{
+  "name": "zzyl-family",
+  "version": "1.0.0",
+  "description": "中州养老家属端小程序（uni-app vue3）",
+  "dependencies": {
+    "@dcloudio/uni-ui": "^1.4.30"
+  },
+  "devDependencies": {
+    "@dcloudio/types": "^3.4.8",
+    "vue": "^3.4.21"
+  }
+}

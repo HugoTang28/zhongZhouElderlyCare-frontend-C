@@ -1,0 +1,14 @@
+
+.elder .top.data-v-46403da6 { display: flex; justify-content: space-between; align-items: center;
+}
+.name.data-v-46403da6 { font-size: 34rpx; font-weight: 600; color: #1f2329;
+}
+.status.data-v-46403da6 { font-size: 24rpx; padding: 4rpx 16rpx; border-radius: 20rpx;
+}
+.status.on.data-v-46403da6 { background: #e8f5e9; color: #2e7d32;
+}
+.status.off.data-v-46403da6 { background: #f5f5f5; color: #9aa0a6;
+}
+.info.data-v-46403da6 { font-size: 26rpx; color: #6b7075; margin-top: 8rpx;
+}
+

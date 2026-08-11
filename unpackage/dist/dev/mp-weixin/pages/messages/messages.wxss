@@ -1,0 +1,16 @@
+
+.top.data-v-ac5467f4 { display: flex; justify-content: space-between; align-items: center;
+}
+.name.data-v-ac5467f4 { font-size: 30rpx; font-weight: 600; color: #1f2329;
+}
+.time.data-v-ac5467f4 { font-size: 22rpx; color: #9aa0a6;
+}
+.info.data-v-ac5467f4 { font-size: 26rpx; color: #6b7075; margin-top: 8rpx;
+}
+.tag.data-v-ac5467f4 { font-size: 22rpx; padding: 4rpx 14rpx; border-radius: 16rpx; margin-top: 8rpx; display: inline-block;
+}
+.tag.on.data-v-ac5467f4 { background: #e8f5e9; color: #2e7d32;
+}
+.tag.off.data-v-ac5467f4 { background: #f5f5f5; color: #9aa0a6;
+}
+
