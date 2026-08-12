@@ -97,38 +97,172 @@ onShow(() => { load() })
 onPullDownRefresh(() => { load().finally(() => uni.stopPullDownRefresh()) })
 </script>
 
-<style scoped>
-.page { min-height: 100vh; background: #f5f7fa; }
-.header { background: linear-gradient(135deg, #3b7cff, #5e9bff); padding: 40rpx 30rpx 60rpx; color: #fff; }
-.header-title { font-size: 40rpx; font-weight: bold; }
-.header-sub { font-size: 26rpx; opacity: 0.85; margin-top: 10rpx; }
-.content { padding: 0 24rpx 40rpx; margin-top: 30rpx; }
+<style scoped lang="scss">
+.page {
+  min-height: 100vh;
+  background: #f5f7fa;
+}
 
-.section { margin-bottom: 30rpx; }
-.section-title { display: flex; align-items: center; font-size: 30rpx; font-weight: bold; color: #333; margin-bottom: 20rpx; }
-.dot { width: 16rpx; height: 16rpx; border-radius: 50%; margin-right: 12rpx; }
-.dot.blue { background: #3b7cff; }
-.dot.green { background: #07c160; }
+.header {
+  background: linear-gradient(135deg, #3b7cff, #5e9bff);
+  padding: 40rpx 30rpx 60rpx;
+  color: #fff;
 
-.card { background: #fff; border-radius: 24rpx; padding: 28rpx; margin-bottom: 20rpx; box-shadow: 0 4rpx 20rpx rgba(0,0,0,0.06); }
-.card-top { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20rpx; }
-.card-title { font-size: 32rpx; font-weight: bold; color: #1a1a1a; }
-.tag { font-size: 22rpx; padding: 6rpx 16rpx; border-radius: 20rpx; }
-.wait { background: #fff5e6; color: #ff9900; }
-.pass { background: #e6f7ed; color: #07c160; }
-.reject { background: #ffebeb; color: #ff4d4f; }
-.cancel { background: #f2f2f2; color: #999; }
-.grey { background: #f2f2f2; color: #666; }
+  &-title {
+    font-size: 40rpx;
+    font-weight: bold;
+  }
 
-.card-body { border-top: 1rpx solid #f5f5f5; padding-top: 16rpx; }
-.row { display: flex; justify-content: space-between; padding: 12rpx 0; }
-.label { color: #999; font-size: 26rpx; }
-.value { color: #333; font-size: 26rpx; font-weight: 500; }
-.value.time { color: #3b7cff; }
+  &-sub {
+    font-size: 26rpx;
+    opacity: 0.85;
+    margin-top: 10rpx;
+  }
+}
 
-.empty-mini { text-align: center; color: #999; padding: 60rpx 0; font-size: 28rpx; background: #fff; border-radius: 24rpx; }
-.state-box { text-align: center; padding: 120rpx 40rpx; }
-.spinner { width: 60rpx; height: 60rpx; border: 4rpx solid #e6e6e6; border-top-color: #3b7cff; border-radius: 50%; margin: 0 auto 20rpx; animation: spin 1s linear infinite; }
-@keyframes spin { to { transform: rotate(360deg); } }
-.state-text { font-size: 30rpx; color: #666; }
+.content {
+  padding: 0 24rpx 40rpx;
+  margin-top: 30rpx;
+}
+
+.section {
+  margin-bottom: 30rpx;
+
+  &-title {
+    display: flex;
+    align-items: center;
+    font-size: 30rpx;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 20rpx;
+  }
+}
+
+.dot {
+  width: 16rpx;
+  height: 16rpx;
+  border-radius: 50%;
+  margin-right: 12rpx;
+
+  &.blue {
+    background: #3b7cff;
+  }
+
+  &.green {
+    background: #07c160;
+  }
+}
+
+.card {
+  background: #fff;
+  border-radius: 24rpx;
+  padding: 28rpx;
+  margin-bottom: 20rpx;
+  box-shadow: 0 4rpx 20rpx rgba(0, 0, 0, 0.06);
+
+  &-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20rpx;
+  }
+
+  &-title {
+    font-size: 32rpx;
+    font-weight: bold;
+    color: #1a1a1a;
+  }
+
+  &-body {
+    border-top: 1rpx solid #f5f5f5;
+    padding-top: 16rpx;
+  }
+}
+
+.tag {
+  font-size: 22rpx;
+  padding: 6rpx 16rpx;
+  border-radius: 20rpx;
+}
+
+.wait {
+  background: #fff5e6;
+  color: #ff9900;
+}
+
+.pass {
+  background: #e6f7ed;
+  color: #07c160;
+}
+
+.reject {
+  background: #ffebeb;
+  color: #ff4d4f;
+}
+
+.cancel {
+  background: #f2f2f2;
+  color: #999;
+}
+
+.grey {
+  background: #f2f2f2;
+  color: #666;
+}
+
+.row {
+  display: flex;
+  justify-content: space-between;
+  padding: 12rpx 0;
+}
+
+.label {
+  color: #999;
+  font-size: 26rpx;
+}
+
+.value {
+  color: #333;
+  font-size: 26rpx;
+  font-weight: 500;
+
+  &.time {
+    color: #3b7cff;
+  }
+}
+
+.empty-mini {
+  text-align: center;
+  color: #999;
+  padding: 60rpx 0;
+  font-size: 28rpx;
+  background: #fff;
+  border-radius: 24rpx;
+}
+
+.state-box {
+  text-align: center;
+  padding: 120rpx 40rpx;
+}
+
+.spinner {
+  width: 60rpx;
+  height: 60rpx;
+  border: 4rpx solid #e6e6e6;
+  border-top-color: #3b7cff;
+  border-radius: 50%;
+  margin: 0 auto 20rpx;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.state-text {
+  font-size: 30rpx;
+  color: #666;
+}
 </style>
