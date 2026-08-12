@@ -10,10 +10,14 @@ if (!Math) {
   "./pages/messages/messages.js";
 }
 const _sfc_main = {
-  __name: "App",
-  setup(__props) {
-    return () => {
-    };
+  onLaunch() {
+    console.log("App Launch");
+  },
+  onShow() {
+    console.log("App Show");
+  },
+  onHide() {
+    console.log("App Hide");
   }
 };
 const zzPlaceholder = () => "./components/zz-placeholder/zz-placeholder.js";

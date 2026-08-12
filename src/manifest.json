@@ -2,6 +2,7 @@
   "name": "zzyl-family",
   "appid": "touristappid",
   "description": "中州养老家属端小程序",
+  "vueVersion": "3",
   "h5": {
     "router": {
       "base": "./"
