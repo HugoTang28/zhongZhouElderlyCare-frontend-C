@@ -1,5 +1,7 @@
 {
   "navigationBarTitleText": "消息与预警",
   "enablePullDownRefresh": true,
-  "usingComponents": {}
+  "usingComponents": {
+    "zz-status-tag": "../../components/zz-status-tag/zz-status-tag"
+  }
 }

@@ -57,7 +57,7 @@
             <view class="device-item" v-for="(item, index) in devices" :key="'d'+index">
               <view class="device-name">{{ item.deviceName }}</view>
               <view class="device-type">{{ item.deviceType }}</view>
-              <view class="device-status" :class="item.statusCls">{{ item.statusText }}</view>
+              <zz-status-tag :text="item.statusText" :type="item.statusType" />
             </view>
           </view>
         </view>
@@ -81,6 +81,7 @@ const msgIconMap = { '探视': '👋', '护理': '💊', '财务': '💰', '账�
 const msgClsMap = { '探视': 'visit', '护理': 'care', '财务': 'finance', '账单': 'bill', '系统': 'system' }
 const deviceTextMap = { 0: '离线', 1: '在线', 2: '故障' }
 const deviceClsMap = { 1: 'online', 2: 'fault' }
+const deviceTypeMap = { 1: 'success', 2: 'danger' }
 const alarmTextMap = { 0: '停用', 1: '启用' }
 
 function load() {
@@ -102,7 +103,8 @@ function load() {
     devices.value = ((data && data.devices) || []).map(it => ({
       ...it,
       statusText: deviceTextMap[it.status] || '未知',
-      statusCls: deviceClsMap[it.status] || 'offline'
+      statusCls: deviceClsMap[it.status] || 'offline',
+      statusType: deviceTypeMap[it.status] || 'info'
     }))
   }).catch(err => console.error('加载预警失败', err))
 

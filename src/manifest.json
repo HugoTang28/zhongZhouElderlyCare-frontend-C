@@ -9,6 +9,10 @@
   },
   "mp-weixin": {
     "appid": "touristappid",
+    "lazyCodeLoading": "requiredComponents",
+    "componentPlaceholder": {
+      "zz-status-tag": "zz-placeholder"
+    },
     "setting": {
       "urlCheck": false,
       "es6": true

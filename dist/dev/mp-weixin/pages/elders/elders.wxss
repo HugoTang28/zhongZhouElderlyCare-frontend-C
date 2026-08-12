@@ -65,23 +65,6 @@
   color: #1a1a1a;
   margin-right: 16rpx;
 }
-.badge.data-v-18f9d8a6 {
-  font-size: 22rpx;
-  padding: 4rpx 14rpx;
-  border-radius: 20rpx;
-}
-.status-in.data-v-18f9d8a6 {
-  background: #e6f7ed;
-  color: #07c160;
-}
-.status-out.data-v-18f9d8a6 {
-  background: #f2f2f2;
-  color: #999;
-}
-.status-wait.data-v-18f9d8a6 {
-  background: #fff5e6;
-  color: #ff9900;
-}
 .meta.data-v-18f9d8a6 {
   font-size: 26rpx;
   color: #666;

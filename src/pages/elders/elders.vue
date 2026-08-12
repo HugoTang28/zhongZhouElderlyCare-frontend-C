@@ -29,7 +29,7 @@
             <view class="head-info">
               <view class="name-line">
                 <text class="name">{{ item.elderName }}</text>
-                <text class="badge" :class="item.statusCls">{{ item.statusText }}</text>
+                <zz-status-tag :text="item.statusText" :type="item.statusType" />
               </view>
               <view class="meta">{{ item.sexText }} · {{ item.age }}岁</view>
             </view>
@@ -83,7 +83,7 @@ const list = ref([])
 const loading = ref(false)
 
 const statusTextMap = { 0: '在住', 1: '已退住', 2: '待入住' }
-const statusClsMap = { 0: 'status-in', 1: 'status-out', 2: 'status-wait' }
+const statusTypeMap = { 0: 'success', 1: 'info', 2: 'warning' }
 const sexTextMap = { 1: '男', 2: '女' }
 
 function load() {
@@ -92,7 +92,7 @@ function load() {
     list.value = (data || []).map(it => ({
       ...it,
       statusText: statusTextMap[it.status] || '未知',
-      statusCls: statusClsMap[it.status] || 'status-wait',
+      statusType: statusTypeMap[it.status] || 'warning',
       sexText: sexTextMap[it.sex] || '未知',
       idCardMasked: maskIdCard(it.idCard),
       bedText: it.bedId ? ('#' + it.bedId) : '暂未分配',
@@ -186,26 +186,6 @@ onPullDownRefresh(() => { load().finally(() => uni.stopPullDownRefresh()) })
   margin-right: 16rpx;
 }
 
-.badge {
-  font-size: 22rpx;
-  padding: 4rpx 14rpx;
-  border-radius: 20rpx;
-}
-
-.status-in {
-  background: #e6f7ed;
-  color: #07c160;
-}
-
-.status-out {
-  background: #f2f2f2;
-  color: #999;
-}
-
-.status-wait {
-  background: #fff5e6;
-  color: #ff9900;
-}
 
 .meta {
   font-size: 26rpx;

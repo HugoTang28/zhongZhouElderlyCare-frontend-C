@@ -33,7 +33,7 @@
             </view>
             <view class="card-body">
               <view class="row"><text class="label">老人</text><text class="value">{{ item.elderName }}</text></view>
-              <view class="row"><text class="label">状态</text><text class="value" :class="item.statusCls">{{ item.statusText }}</text></view>
+              <view class="row"><text class="label">状态</text><zz-status-tag :text="item.statusText" :type="item.statusType" /></view>
               <view class="row"><text class="label">账单周期</text><text class="value">{{ item.timeText }}</text></view>
             </view>
           </view>
@@ -75,6 +75,7 @@ const loading = ref(false)
 
 const billStatusTextMap = { 0: '未缴', 1: '已缴', 2: '退费' }
 const billStatusClsMap = { 0: 'unpaid', 1: 'paid', 2: 'refund' }
+const billStatusTypeMap = { 0: 'danger', 1: 'success', 2: 'warning' }
 const prestoreTypeMap = { 0: '预存充值', 1: '费用扣款', 2: '退款' }
 
 function load() {
@@ -84,6 +85,7 @@ function load() {
       ...it,
       statusText: billStatusTextMap[it.status] || '未知',
       statusCls: billStatusClsMap[it.status] || 'unpaid',
+      statusType: billStatusTypeMap[it.status] || 'danger',
       timeText: it.billMonth || fmtTime(it.createTime)
     }))
     prestore.value = ((data && data.prestores) || []).map(it => ({

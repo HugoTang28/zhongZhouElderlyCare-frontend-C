@@ -2,6 +2,14 @@
 const common_vendor = require("../../common/vendor.js");
 const api_family = require("../../api/family.js");
 const utils_format = require("../../utils/format.js");
+if (!Array) {
+  const _easycom_zz_status_tag2 = common_vendor.resolveComponent("zz-status-tag");
+  _easycom_zz_status_tag2();
+}
+const _easycom_zz_status_tag = () => "../../components/zz-status-tag/zz-status-tag.js";
+if (!Math) {
+  _easycom_zz_status_tag();
+}
 const _sfc_main = {
   __name: "messages",
   setup(__props) {
@@ -13,6 +21,7 @@ const _sfc_main = {
     const msgClsMap = { "探视": "visit", "护理": "care", "财务": "finance", "账单": "bill", "系统": "system" };
     const deviceTextMap = { 0: "离线", 1: "在线", 2: "故障" };
     const deviceClsMap = { 1: "online", 2: "fault" };
+    const deviceTypeMap = { 1: "success", 2: "danger" };
     const alarmTextMap = { 0: "停用", 1: "启用" };
     function load() {
       loading.value = true;
@@ -32,7 +41,8 @@ const _sfc_main = {
         devices.value = (data && data.devices || []).map((it) => ({
           ...it,
           statusText: deviceTextMap[it.status] || "未知",
-          statusCls: deviceClsMap[it.status] || "offline"
+          statusCls: deviceClsMap[it.status] || "offline",
+          statusType: deviceTypeMap[it.status] || "info"
         }));
       }).catch((err) => console.error("加载预警失败", err));
       return Promise.all([p1, p2]).finally(() => {
@@ -79,8 +89,11 @@ const _sfc_main = {
           return {
             a: common_vendor.t(item.deviceName),
             b: common_vendor.t(item.deviceType),
-            c: common_vendor.t(item.statusText),
-            d: common_vendor.n(item.statusCls),
+            c: "f5640984-0-" + i0,
+            d: common_vendor.p({
+              text: item.statusText,
+              type: item.statusType
+            }),
             e: "d" + index
           };
         })

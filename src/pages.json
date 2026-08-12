@@ -45,10 +45,19 @@
       { "pagePath": "pages/messages/messages", "text": "消息", "iconPath": "static/tabbar/msg.png", "selectedIconPath": "static/tabbar/msg_active.png" }
     ]
   },
+  "easycom": {
+    "autoscan": true,
+    "custom": {
+      "^uni-(.*)": "@dcloudio/uni-ui/lib/uni-$1/uni-$1.vue"
+    }
+  },
   "globalStyle": {
     "navigationBarTitleText": "中州养老家属端",
     "navigationBarBackgroundColor": "#3b7cff",
     "navigationBarTextStyle": "white",
-    "backgroundColor": "#f5f6fa"
+    "backgroundColor": "#f5f6fa",
+    "usingComponents": {
+      "zz-placeholder": "components/zz-placeholder/zz-placeholder"
+    }
   }
 }

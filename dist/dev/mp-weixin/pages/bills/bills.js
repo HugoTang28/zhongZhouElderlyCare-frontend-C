@@ -2,6 +2,14 @@
 const common_vendor = require("../../common/vendor.js");
 const api_family = require("../../api/family.js");
 const utils_format = require("../../utils/format.js");
+if (!Array) {
+  const _easycom_zz_status_tag2 = common_vendor.resolveComponent("zz-status-tag");
+  _easycom_zz_status_tag2();
+}
+const _easycom_zz_status_tag = () => "../../components/zz-status-tag/zz-status-tag.js";
+if (!Math) {
+  _easycom_zz_status_tag();
+}
 const _sfc_main = {
   __name: "bills",
   setup(__props) {
@@ -11,6 +19,7 @@ const _sfc_main = {
     const loading = common_vendor.ref(false);
     const billStatusTextMap = { 0: "未缴", 1: "已缴", 2: "退费" };
     const billStatusClsMap = { 0: "unpaid", 1: "paid", 2: "refund" };
+    const billStatusTypeMap = { 0: "danger", 1: "success", 2: "warning" };
     const prestoreTypeMap = { 0: "预存充值", 1: "费用扣款", 2: "退款" };
     function load() {
       loading.value = true;
@@ -19,6 +28,7 @@ const _sfc_main = {
           ...it,
           statusText: billStatusTextMap[it.status] || "未知",
           statusCls: billStatusClsMap[it.status] || "unpaid",
+          statusType: billStatusTypeMap[it.status] || "danger",
           timeText: it.billMonth || utils_format.fmtTime(it.createTime)
         }));
         prestore.value = (data && data.prestores || []).map((it) => ({
@@ -54,8 +64,11 @@ const _sfc_main = {
             b: common_vendor.t(item.amount),
             c: common_vendor.n(item.statusCls),
             d: common_vendor.t(item.elderName),
-            e: common_vendor.t(item.statusText),
-            f: common_vendor.n(item.statusCls),
+            e: "3b793916-0-" + i0,
+            f: common_vendor.p({
+              text: item.statusText,
+              type: item.statusType
+            }),
             g: common_vendor.t(item.timeText),
             h: "b" + index
           };

@@ -1,5 +1,7 @@
 {
   "navigationBarTitleText": "账单与预存",
   "enablePullDownRefresh": true,
-  "usingComponents": {}
+  "usingComponents": {
+    "zz-status-tag": "../../components/zz-status-tag/zz-status-tag"
+  }
 }

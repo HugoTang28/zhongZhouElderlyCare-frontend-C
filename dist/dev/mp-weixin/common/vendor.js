@@ -746,8 +746,8 @@ function promisify$1(name, fn) {
     if (hasCallback(args)) {
       return wrapperReturnValue(name, invokeApi(name, fn, extend({}, args), rest));
     }
-    return wrapperReturnValue(name, handlePromise(new Promise((resolve, reject) => {
-      invokeApi(name, fn, extend({}, args, { success: resolve, fail: reject }), rest);
+    return wrapperReturnValue(name, handlePromise(new Promise((resolve2, reject) => {
+      invokeApi(name, fn, extend({}, args, { success: resolve2, fail: reject }), rest);
     })));
   };
 }
@@ -1068,7 +1068,7 @@ function invokeGetPushCidCallbacks(cid2, errMsg) {
   getPushCidCallbacks.length = 0;
 }
 const API_GET_PUSH_CLIENT_ID = "getPushClientId";
-const getPushClientId$1 = defineAsyncApi(API_GET_PUSH_CLIENT_ID, (_, { resolve, reject }) => {
+const getPushClientId$1 = defineAsyncApi(API_GET_PUSH_CLIENT_ID, (_, { resolve: resolve2, reject }) => {
   Promise.resolve().then(() => {
     if (typeof enabled === "undefined") {
       enabled = false;
@@ -1077,7 +1077,7 @@ const getPushClientId$1 = defineAsyncApi(API_GET_PUSH_CLIENT_ID, (_, { resolve, 
     }
     getPushCidCallbacks.push((cid2, errMsg) => {
       if (cid2) {
-        resolve({ cid: cid2 });
+        resolve2({ cid: cid2 });
       } else {
         reject(errMsg);
       }
@@ -1146,9 +1146,9 @@ function promisify(name, api) {
     if (isFunction(options.success) || isFunction(options.fail) || isFunction(options.complete)) {
       return wrapperReturnValue(name, invokeApi(name, api, extend({}, options), rest));
     }
-    return wrapperReturnValue(name, handlePromise(new Promise((resolve, reject) => {
+    return wrapperReturnValue(name, handlePromise(new Promise((resolve2, reject) => {
       invokeApi(name, api, extend({}, options, {
-        success: resolve,
+        success: resolve2,
         fail: reject
       }), rest);
     })));
@@ -2660,6 +2660,9 @@ function isReadonly(value) {
 function isShallow(value) {
   return !!(value && value["__v_isShallow"]);
 }
+function isProxy(value) {
+  return isReactive(value) || isReadonly(value);
+}
 function toRaw(observed) {
   const raw = observed && observed["__v_raw"];
   return raw ? toRaw(raw) : observed;
@@ -3446,6 +3449,47 @@ function setCurrentRenderingInstance(instance2) {
   currentRenderingInstance = instance2;
   instance2 && instance2.type.__scopeId || null;
   return prev;
+}
+const COMPONENTS = "components";
+function resolveComponent(name, maybeSelfReference) {
+  return resolveAsset(COMPONENTS, name, true, maybeSelfReference) || name;
+}
+function resolveAsset(type, name, warnMissing = true, maybeSelfReference = false) {
+  const instance2 = currentRenderingInstance || currentInstance;
+  if (instance2) {
+    const Component2 = instance2.type;
+    {
+      const selfName = getComponentName(
+        Component2,
+        false
+      );
+      if (selfName && (selfName === name || selfName === camelize(name) || selfName === capitalize(camelize(name)))) {
+        return Component2;
+      }
+    }
+    const res = (
+      // local registration
+      // check instance[type] first which is resolved for options API
+      resolve(instance2[type] || Component2[type], name) || // global registration
+      resolve(instance2.appContext[type], name)
+    );
+    if (!res && maybeSelfReference) {
+      return Component2;
+    }
+    if (warnMissing && !res) {
+      const extra = `
+If this is a native custom element, make sure to exclude it from component resolution via compilerOptions.isCustomElement.`;
+      warn$1(`Failed to resolve ${type.slice(0, -1)}: ${name}${extra}`);
+    }
+    return res;
+  } else {
+    warn$1(
+      `resolve${capitalize(type.slice(0, -1))} can only be used in render() or setup().`
+    );
+  }
+}
+function resolve(registry2, name) {
+  return registry2 && (registry2[name] || registry2[camelize(name)] || registry2[capitalize(camelize(name))]);
 }
 const INITIAL_WATCHER_VALUE = {};
 function watch(source, cb, options) {
@@ -5079,6 +5123,12 @@ const Static = Symbol.for("v-stc");
 function isVNode(value) {
   return value ? value.__v_isVNode === true : false;
 }
+const InternalObjectKey = `__vInternal`;
+function guardReactiveProps(props) {
+  if (!props)
+    return null;
+  return isProxy(props) || InternalObjectKey in props ? extend({}, props) : props;
+}
 const emptyAppContext = createAppContext();
 let uid = 0;
 function createComponentInstance(vnode, parent, suspense) {
@@ -6335,6 +6385,11 @@ function initApp(app) {
   }
 }
 const propsCaches = /* @__PURE__ */ Object.create(null);
+function renderProps(props) {
+  const { uid: uid2, __counter } = getCurrentInstance();
+  const propsId = (propsCaches[uid2] || (propsCaches[uid2] = [])).push(guardReactiveProps(props)) - 1;
+  return uid2 + "," + propsId + "," + __counter;
+}
 function pruneComponentPropsCache(uid2) {
   delete propsCaches[uid2];
 }
@@ -6521,6 +6576,7 @@ const f = (source, renderItem) => vFor(source, renderItem);
 const e = (target, ...sources) => extend(target, ...sources);
 const n$1 = (value) => normalizeClass(value);
 const t = (val) => toDisplayString(val);
+const p = (props) => renderProps(props);
 function createApp$1(rootComponent, rootProps = null) {
   rootComponent && (rootComponent.mpType = "app");
   return createVueApp(rootComponent, rootProps).use(plugin);
@@ -7489,11 +7545,11 @@ function toIey(input) {
 }
 function __awaiter(thisArg, _arguments, P, generator) {
   function adopt(value) {
-    return value instanceof P ? value : new P(function(resolve) {
-      resolve(value);
+    return value instanceof P ? value : new P(function(resolve2) {
+      resolve2(value);
     });
   }
-  return new (P || (P = Promise))(function(resolve, reject) {
+  return new (P || (P = Promise))(function(resolve2, reject) {
     function fulfilled(value) {
       try {
         step(generator.next(value));
@@ -7509,7 +7565,7 @@ function __awaiter(thisArg, _arguments, P, generator) {
       }
     }
     function step(result) {
-      result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected);
+      result.done ? resolve2(result.value) : adopt(result.value).then(fulfilled, rejected);
     }
     step((generator = generator.apply(thisArg, _arguments || [])).next());
   });
@@ -7578,7 +7634,7 @@ function withRetry(fn, opts) {
   });
 }
 function defaultSleep(ms) {
-  return new Promise((resolve) => setTimeout(resolve, ms));
+  return new Promise((resolve2) => setTimeout(resolve2, ms));
 }
 function isUsableUniRuntime(candidate) {
   if (candidate == null || typeof candidate !== "object")
@@ -7726,8 +7782,8 @@ function isAndroidOrIosRuntime() {
   }
   if (raw.startsWith("mp-")) {
     try {
-      const p = (_h = (_g = (_f = (_e = g.uni) === null || _e === void 0 ? void 0 : _e.getSystemInfoSync) === null || _f === void 0 ? void 0 : _f.call(_e)) === null || _g === void 0 ? void 0 : _g.platform) === null || _h === void 0 ? void 0 : _h.toLowerCase();
-      return p === "android" || p === "ios";
+      const p2 = (_h = (_g = (_f = (_e = g.uni) === null || _e === void 0 ? void 0 : _e.getSystemInfoSync) === null || _f === void 0 ? void 0 : _f.call(_e)) === null || _g === void 0 ? void 0 : _g.platform) === null || _h === void 0 ? void 0 : _h.toLowerCase();
+      return p2 === "android" || p2 === "ios";
     } catch (_j) {
       return false;
     }
@@ -8713,14 +8769,14 @@ function getUni$8() {
 }
 function getPushClientId(opts = {}) {
   const { enabled: enabled2 = false, timeoutMs = 3e3 } = opts;
-  return new Promise((resolve) => {
+  return new Promise((resolve2) => {
     if (!enabled2) {
-      resolve({ ok: false, cid: "", reason: "disabled" });
+      resolve2({ ok: false, cid: "", reason: "disabled" });
       return;
     }
     const u = getUni$8();
     if (!u || typeof u.getPushClientId !== "function") {
-      resolve({ ok: false, cid: "", reason: "unsupported" });
+      resolve2({ ok: false, cid: "", reason: "unsupported" });
       return;
     }
     let settled = false;
@@ -8728,7 +8784,7 @@ function getPushClientId(opts = {}) {
       if (settled)
         return;
       settled = true;
-      resolve(r);
+      resolve2(r);
     };
     const timer = setTimeout(() => finish({ ok: false, cid: "", reason: "timeout" }), timeoutMs);
     tryRun(() => u.getPushClientId({
@@ -9805,7 +9861,7 @@ function createHttpChannel(opts = {}) {
     if (!u || typeof u.request !== "function") {
       return Promise.reject(new Error("uni.request unavailable"));
     }
-    return new Promise((resolve, reject) => {
+    return new Promise((resolve2, reject) => {
       let settled = false;
       const timer = setTimeout(() => {
         if (settled)
@@ -9826,7 +9882,7 @@ function createHttpChannel(opts = {}) {
           clearTimeout(timer);
           const code = (_a2 = res === null || res === void 0 ? void 0 : res.statusCode) !== null && _a2 !== void 0 ? _a2 : 0;
           if (code >= 200 && code < 300)
-            resolve();
+            resolve2();
           else
             reject(new Error("http status " + code));
         },
@@ -9895,7 +9951,7 @@ function imageBeaconAwait(url, ms) {
   if (typeof ImageCtor !== "function") {
     return Promise.reject(new PermanentChannelError("当前环境无法完成统计上报"));
   }
-  return new Promise((resolve, reject) => {
+  return new Promise((resolve2, reject) => {
     let settled = false;
     const timer = setTimeout(() => {
       if (settled)
@@ -9909,14 +9965,14 @@ function imageBeaconAwait(url, ms) {
         return;
       settled = true;
       clearTimeout(timer);
-      resolve();
+      resolve2();
     };
     img.onerror = () => {
       if (settled)
         return;
       settled = true;
       clearTimeout(timer);
-      resolve();
+      resolve2();
     };
     img.src = url;
   });
@@ -9928,7 +9984,7 @@ function fetchBeaconAwait(url, ms) {
     return Promise.reject(new Error("fetch unavailable"));
   }
   const controller = typeof g.AbortController === "function" ? new g.AbortController() : void 0;
-  return new Promise((resolve, reject) => {
+  return new Promise((resolve2, reject) => {
     let settled = false;
     const timer = setTimeout(() => {
       if (settled)
@@ -9949,7 +10005,7 @@ function fetchBeaconAwait(url, ms) {
       settled = true;
       clearTimeout(timer);
       if (res && res.ok) {
-        resolve();
+        resolve2();
         return;
       }
       reject(new Error("统计上报 HTTP " + (res ? res.status : 0)));
@@ -9979,7 +10035,7 @@ function formatWxPreloadFail(err) {
   return new Error(String(err));
 }
 function mpWeixinPreloadAssetsBeaconAwait(url, ms, preload) {
-  return new Promise((resolve, reject) => {
+  return new Promise((resolve2, reject) => {
     let settled = false;
     const timer = setTimeout(() => {
       if (settled)
@@ -9995,7 +10051,7 @@ function mpWeixinPreloadAssetsBeaconAwait(url, ms, preload) {
             return;
           settled = true;
           clearTimeout(timer);
-          resolve();
+          resolve2();
         },
         fail: (err) => {
           if (settled)
@@ -10060,7 +10116,7 @@ function createImageChannel(opts = {}) {
     if (!u || typeof u.request !== "function") {
       return Promise.reject(new PermanentChannelError("当前环境无法完成统计上报"));
     }
-    return new Promise((resolve, reject) => {
+    return new Promise((resolve2, reject) => {
       let settled = false;
       const timer = setTimeout(() => {
         if (settled)
@@ -10080,7 +10136,7 @@ function createImageChannel(opts = {}) {
           clearTimeout(timer);
           const code = (_a2 = res === null || res === void 0 ? void 0 : res.statusCode) !== null && _a2 !== void 0 ? _a2 : 0;
           if (code >= 200 && code < 300) {
-            resolve();
+            resolve2();
             return;
           }
           const hint = summarizeHttpErrorBody(res === null || res === void 0 ? void 0 : res.data);
@@ -10339,11 +10395,11 @@ function mergeWxHostSnapshots() {
 }
 function mergeSystemSnapshots(...parts) {
   const out = {};
-  for (const p of parts) {
-    if (!p)
+  for (const p2 of parts) {
+    if (!p2)
       continue;
-    for (const k of Object.keys(p)) {
-      const v = p[k];
+    for (const k of Object.keys(p2)) {
+      const v = p2[k];
       if (v !== void 0 && v !== null)
         out[k] = v;
     }
@@ -10881,10 +10937,10 @@ function normalizeNet(raw) {
   return (_a = NET_MAP[raw.toLowerCase()]) !== null && _a !== void 0 ? _a : "unknown";
 }
 function getNet(timeoutMs = 1500) {
-  return new Promise((resolve) => {
+  return new Promise((resolve2) => {
     const u = getUni$1();
     if (!u || typeof u.getNetworkType !== "function") {
-      resolve(DEFAULT_RESULT);
+      resolve2(DEFAULT_RESULT);
       return;
     }
     let settled = false;
@@ -10892,7 +10948,7 @@ function getNet(timeoutMs = 1500) {
       if (settled)
         return;
       settled = true;
-      resolve(r);
+      resolve2(r);
     };
     const timer = setTimeout(() => finish(DEFAULT_RESULT), timeoutMs);
     tryRun(() => u.getNetworkType({
@@ -11720,5 +11776,7 @@ exports.o = o;
 exports.onPullDownRefresh = onPullDownRefresh;
 exports.onShow = onShow;
 exports.onUnload = onUnload;
+exports.p = p;
 exports.ref = ref;
+exports.resolveComponent = resolveComponent;
 exports.t = t;
