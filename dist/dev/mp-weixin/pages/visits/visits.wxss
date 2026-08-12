@@ -6,7 +6,7 @@
 }
 .header-sub.data-v-367d0dd2 { font-size: 26rpx; opacity: 0.85; margin-top: 10rpx;
 }
-.content.data-v-367d0dd2 { padding: 0 24rpx 40rpx; margin-top: -30rpx;
+.content.data-v-367d0dd2 { padding: 0 24rpx 40rpx; margin-top: 30rpx;
 }
 .section.data-v-367d0dd2 { margin-bottom: 30rpx;
 }

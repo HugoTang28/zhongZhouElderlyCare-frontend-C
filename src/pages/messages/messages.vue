@@ -1,9 +1,5 @@
 <template>
   <view class="page">
-    <view class="header">
-      <view class="header-title">消息与预警</view>
-      <view class="header-sub">院内通知、护理提醒与设备预警</view>
-    </view>
 
     <view class="content">
       <view v-if="loading" class="state-box">
@@ -119,10 +115,7 @@ onPullDownRefresh(() => { load().finally(() => uni.stopPullDownRefresh()) })
 
 <style scoped>
 .page { min-height: 100vh; background: #f5f7fa; }
-.header { background: linear-gradient(135deg, #3b7cff, #5e9bff); padding: 40rpx 30rpx 60rpx; color: #fff; }
-.header-title { font-size: 40rpx; font-weight: bold; }
-.header-sub { font-size: 26rpx; opacity: 0.85; margin-top: 10rpx; }
-.content { padding: 0 24rpx 40rpx; margin-top: -30rpx; }
+.content { padding: 0 24rpx 40rpx; margin-top: 30rpx; }
 
 .section { margin-bottom: 30rpx; }
 .section-title { display: flex; align-items: center; font-size: 30rpx; font-weight: bold; color: #333; margin-bottom: 20rpx; }

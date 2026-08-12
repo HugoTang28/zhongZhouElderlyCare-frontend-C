@@ -39,8 +39,7 @@ const _sfc_main = {
       return common_vendor.e({
         a: loading.value
       }, loading.value ? {} : !list.value.length ? {} : {
-        c: common_vendor.t(list.value.length),
-        d: common_vendor.f(list.value, (item, index, i0) => {
+        c: common_vendor.f(list.value, (item, index, i0) => {
           return {
             a: common_vendor.t(item.elderName ? item.elderName.charAt(0) : "长"),
             b: common_vendor.t(item.elderName),

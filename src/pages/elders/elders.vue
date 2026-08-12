@@ -1,10 +1,10 @@
 <template>
   <view class="page">
     <!-- 顶部 header -->
-    <view class="header">
+    <!-- <view class="header">
       <view class="header-title">我的家人</view>
       <view class="header-sub">随时关注长者在院情况</view>
-    </view>
+    </view> -->
 
     <view class="content">
       <!-- 加载中 -->
@@ -22,7 +22,7 @@
 
       <!-- 老人卡片列表 -->
       <view v-else>
-        <view class="summary">共 {{ list.length }} 位在院亲人</view>
+        <!-- <view class="summary">共 {{ list.length }} 位在院亲人</view> -->
         <view class="elder-card" v-for="(item, index) in list" :key="index">
           <view class="card-head">
             <view class="avatar">{{ item.elderName ? item.elderName.charAt(0) : '长' }}</view>
@@ -33,6 +33,7 @@
               </view>
               <view class="meta">{{ item.sexText }} · {{ item.age }}岁</view>
             </view>
+            <text class="card-arrow">›</text>
           </view>
 
           <view class="info-grid">
@@ -60,6 +61,11 @@
               <text class="info-label">入住时间</text>
               <text class="info-value">{{ item.checkInTimeText }}</text>
             </view>
+          </view>
+
+          <view class="card-foot">
+            <text>查看照护与账单详情</text>
+            <text class="card-arrow">›</text>
           </view>
         </view>
       </view>
@@ -106,17 +112,18 @@ onPullDownRefresh(() => { load().finally(() => uni.stopPullDownRefresh()) })
 
 <style scoped>
 .page { min-height: 100vh; background: #f5f7fa; }
-.header { background: linear-gradient(135deg, #3b7cff, #5e9bff); padding: 40rpx 30rpx 60rpx; color: #fff; }
+/* .header { background: linear-gradient(135deg, #3b7cff, #5e9bff); padding: 40rpx 30rpx 60rpx; color: #fff; }
 .header-title { font-size: 40rpx; font-weight: bold; }
-.header-sub { font-size: 26rpx; opacity: 0.85; margin-top: 10rpx; }
-.content { padding: 0 24rpx 40rpx; margin-top: -30rpx; }
+.header-sub { font-size: 26rpx; opacity: 0.85; margin-top: 10rpx; } */
+.content { padding: 0 24rpx 40rpx; margin-top: 30rpx; }
 
 .summary { font-size: 26rpx; color: #666; margin: 24rpx 8rpx 8rpx; }
 
 .elder-card { background: #fff; border-radius: 24rpx; padding: 32rpx; margin-bottom: 24rpx; box-shadow: 0 4rpx 20rpx rgba(0,0,0,0.06); }
 .card-head { display: flex; align-items: center; margin-bottom: 28rpx; padding-bottom: 24rpx; border-bottom: 1rpx solid #f0f2f5; }
-.avatar { width: 100rpx; height: 100rpx; border-radius: 50%; background: linear-gradient(135deg, #3b7cff, #5e9bff); color: #fff; display: flex; align-items: center; justify-content: center; font-size: 40rpx; margin-right: 24rpx; }
-.head-info { flex: 1; }
+.avatar { width: 104rpx; height: 104rpx; border-radius: 50%; background: linear-gradient(135deg, #3b7cff, #5e9bff); color: #fff; display: flex; align-items: center; justify-content: center; font-size: 44rpx; font-weight: 600; margin-right: 24rpx; border: 4rpx solid #fff; box-shadow: 0 8rpx 18rpx rgba(59,124,255,0.30); }
+.head-info { flex: 1; min-width: 0; }
+.card-arrow { color: #c5ccd6; font-size: 44rpx; line-height: 1; margin-left: 12rpx; }
 .name-line { display: flex; align-items: center; }
 .name { font-size: 36rpx; font-weight: bold; color: #1a1a1a; margin-right: 16rpx; }
 .badge { font-size: 22rpx; padding: 4rpx 14rpx; border-radius: 20rpx; }
@@ -124,6 +131,8 @@ onPullDownRefresh(() => { load().finally(() => uni.stopPullDownRefresh()) })
 .status-out { background: #f2f2f2; color: #999; }
 .status-wait { background: #fff5e6; color: #ff9900; }
 .meta { font-size: 26rpx; color: #666; margin-top: 8rpx; }
+.card-foot { margin-top: 26rpx; padding-top: 22rpx; border-top: 1rpx solid #f0f2f5; display: flex; align-items: center; justify-content: space-between; font-size: 24rpx; color: #9aa0a6; }
+.card-foot .card-arrow { font-size: 36rpx; }
 
 .info-grid { display: flex; flex-wrap: wrap; }
 .info-item { width: 50%; padding: 16rpx 0; box-sizing: border-box; }

@@ -34,12 +34,15 @@
     "selectedColor": "#3b7cff",
     "backgroundColor": "#ffffff",
     "borderStyle": "black",
+    "iconWidth": "48rpx",
+    "fontSize": "22rpx",
+    "spacing": "6rpx",
     "list": [
-      { "pagePath": "pages/elders/elders", "text": "家人" },
-      { "pagePath": "pages/visits/visits", "text": "探视" },
-      { "pagePath": "pages/bills/bills", "text": "账单" },
-      { "pagePath": "pages/care/care", "text": "护理" },
-      { "pagePath": "pages/messages/messages", "text": "消息" }
+      { "pagePath": "pages/elders/elders", "text": "家人", "iconPath": "static/tabbar/home.png", "selectedIconPath": "static/tabbar/home_active.png" },
+      { "pagePath": "pages/visits/visits", "text": "探视", "iconPath": "static/tabbar/visit.png", "selectedIconPath": "static/tabbar/visit_active.png" },
+      { "pagePath": "pages/bills/bills", "text": "账单", "iconPath": "static/tabbar/bill.png", "selectedIconPath": "static/tabbar/bill_active.png" },
+      { "pagePath": "pages/care/care", "text": "护理", "iconPath": "static/tabbar/care.png", "selectedIconPath": "static/tabbar/care_active.png" },
+      { "pagePath": "pages/messages/messages", "text": "消息", "iconPath": "static/tabbar/msg.png", "selectedIconPath": "static/tabbar/msg_active.png" }
     ]
   },
   "globalStyle": {

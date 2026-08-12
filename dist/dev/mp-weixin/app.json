@@ -21,23 +21,33 @@
     "list": [
       {
         "pagePath": "pages/elders/elders",
-        "text": "家人"
+        "text": "家人",
+        "iconPath": "static/tabbar/home.png",
+        "selectedIconPath": "static/tabbar/home_active.png"
       },
       {
         "pagePath": "pages/visits/visits",
-        "text": "探视"
+        "text": "探视",
+        "iconPath": "static/tabbar/visit.png",
+        "selectedIconPath": "static/tabbar/visit_active.png"
       },
       {
         "pagePath": "pages/bills/bills",
-        "text": "账单"
+        "text": "账单",
+        "iconPath": "static/tabbar/bill.png",
+        "selectedIconPath": "static/tabbar/bill_active.png"
       },
       {
         "pagePath": "pages/care/care",
-        "text": "护理"
+        "text": "护理",
+        "iconPath": "static/tabbar/care.png",
+        "selectedIconPath": "static/tabbar/care_active.png"
       },
       {
         "pagePath": "pages/messages/messages",
-        "text": "消息"
+        "text": "消息",
+        "iconPath": "static/tabbar/msg.png",
+        "selectedIconPath": "static/tabbar/msg_active.png"
       }
     ]
   },

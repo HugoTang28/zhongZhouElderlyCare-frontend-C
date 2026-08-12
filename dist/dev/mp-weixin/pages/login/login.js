@@ -9,6 +9,8 @@ const _sfc_main = {
     const devCode = common_vendor.ref("");
     const counting = common_vendor.ref(false);
     const codeText = common_vendor.ref("获取验证码");
+    const phoneFocus = common_vendor.ref(false);
+    const codeFocus = common_vendor.ref(false);
     let timer = null;
     function getCode() {
       if (!/^1\d{10}$/.test(phone.value)) {
@@ -56,17 +58,23 @@ const _sfc_main = {
     });
     return (_ctx, _cache) => {
       return common_vendor.e({
-        a: phone.value,
-        b: common_vendor.o(($event) => phone.value = $event.detail.value, "d8"),
-        c: code.value,
-        d: common_vendor.o(($event) => code.value = $event.detail.value, "9b"),
-        e: common_vendor.t(codeText.value),
-        f: common_vendor.o(getCode, "44"),
-        g: counting.value,
-        h: common_vendor.o(doLogin, "8b"),
-        i: devCode.value
+        a: common_vendor.o(($event) => phoneFocus.value = true, "17"),
+        b: common_vendor.o(($event) => phoneFocus.value = false, "17"),
+        c: phone.value,
+        d: common_vendor.o(($event) => phone.value = $event.detail.value, "61"),
+        e: phoneFocus.value ? 1 : "",
+        f: common_vendor.o(($event) => codeFocus.value = true, "7f"),
+        g: common_vendor.o(($event) => codeFocus.value = false, "2d"),
+        h: code.value,
+        i: common_vendor.o(($event) => code.value = $event.detail.value, "06"),
+        j: common_vendor.t(codeText.value),
+        k: common_vendor.o(getCode, "27"),
+        l: counting.value,
+        m: codeFocus.value ? 1 : "",
+        n: common_vendor.o(doLogin, "b2"),
+        o: devCode.value
       }, devCode.value ? {
-        j: common_vendor.t(devCode.value)
+        p: common_vendor.t(devCode.value)
       } : {});
     };
   }
