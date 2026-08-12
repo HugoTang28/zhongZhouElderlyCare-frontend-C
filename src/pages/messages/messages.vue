@@ -288,21 +288,17 @@ onPullDownRefresh(() => { load().finally(() => uni.stopPullDownRefresh()) })
   &-grid {
     display: flex;
     flex-wrap: wrap;
+    gap: 20rpx;
   }
 
   &-item {
-    width: calc(50% - 10rpx);
+    width: calc((100% - 20rpx) / 2);
     background: #fff;
     border-radius: 24rpx;
     padding: 28rpx;
-    margin-bottom: 20rpx;
-    margin-right: 20rpx;
+    margin-bottom: 0;
     box-shadow: 0 4rpx 20rpx rgba(0, 0, 0, 0.06);
     box-sizing: border-box;
-
-    &:nth-child(2n) {
-      margin-right: 0;
-    }
   }
 
   &-name {
