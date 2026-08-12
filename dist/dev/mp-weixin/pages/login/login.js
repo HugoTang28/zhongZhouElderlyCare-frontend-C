@@ -1,5 +1,6 @@
 "use strict";
 const common_vendor = require("../../common/vendor.js");
+const common_assets = require("../../common/assets.js");
 const api_family = require("../../api/family.js");
 const _sfc_main = {
   __name: "login",
@@ -58,23 +59,24 @@ const _sfc_main = {
     });
     return (_ctx, _cache) => {
       return common_vendor.e({
-        a: common_vendor.o(($event) => phoneFocus.value = true, "17"),
-        b: common_vendor.o(($event) => phoneFocus.value = false, "17"),
-        c: phone.value,
-        d: common_vendor.o(($event) => phone.value = $event.detail.value, "61"),
-        e: phoneFocus.value ? 1 : "",
-        f: common_vendor.o(($event) => codeFocus.value = true, "7f"),
-        g: common_vendor.o(($event) => codeFocus.value = false, "2d"),
-        h: code.value,
-        i: common_vendor.o(($event) => code.value = $event.detail.value, "06"),
-        j: common_vendor.t(codeText.value),
-        k: common_vendor.o(getCode, "27"),
-        l: counting.value,
-        m: codeFocus.value ? 1 : "",
-        n: common_vendor.o(doLogin, "b2"),
-        o: devCode.value
+        a: common_assets._imports_0,
+        b: common_vendor.o(($event) => phoneFocus.value = true, "3d"),
+        c: common_vendor.o(($event) => phoneFocus.value = false, "92"),
+        d: phone.value,
+        e: common_vendor.o(($event) => phone.value = $event.detail.value, "40"),
+        f: phoneFocus.value ? 1 : "",
+        g: common_vendor.o(($event) => codeFocus.value = true, "ea"),
+        h: common_vendor.o(($event) => codeFocus.value = false, "64"),
+        i: code.value,
+        j: common_vendor.o(($event) => code.value = $event.detail.value, "b8"),
+        k: common_vendor.t(codeText.value),
+        l: common_vendor.o(getCode, "42"),
+        m: counting.value,
+        n: codeFocus.value ? 1 : "",
+        o: common_vendor.o(doLogin, "bf"),
+        p: devCode.value
       }, devCode.value ? {
-        p: common_vendor.t(devCode.value)
+        q: common_vendor.t(devCode.value)
       } : {});
     };
   }

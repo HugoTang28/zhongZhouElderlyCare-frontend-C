@@ -6,7 +6,7 @@
 
     <!-- 品牌区 -->
     <view class="brand">
-      <view class="brand-logo">养</view>
+      <image class="brand-logo" src="/static/logo.png" mode="aspectFit"></image>
       <view class="brand-name">中州养老</view>
       <view class="brand-sub">随时了解老人在院动态</view>
     </view>
@@ -150,13 +150,6 @@ onUnload(() => {
     height: 140rpx;
     border-radius: 38rpx;
     margin: 0 auto 32rpx;
-    background: linear-gradient(135deg, #3b7cff, #5e9bff);
-    color: #fff;
-    font-size: 76rpx;
-    font-weight: 700;
-    display: flex;
-    align-items: center;
-    justify-content: center;
     box-shadow: 0 16rpx 36rpx rgba(59, 124, 255, 0.35);
   }
 
