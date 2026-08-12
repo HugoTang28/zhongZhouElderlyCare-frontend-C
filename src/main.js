@@ -1,7 +1,7 @@
 import { createSSRApp } from 'vue'
 import App from './App.vue'
 import zzPlaceholder from '@/components/zz-placeholder/zz-placeholder.vue'
-
+import '@/static/common/style.scss'
 export function createApp() {
   const app = createSSRApp(App)
   // 全局注册占位组件，确保 uni-app 编译器将其产出到产物中，

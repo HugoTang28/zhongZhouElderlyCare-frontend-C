@@ -1,10 +1,5 @@
 <template>
   <view class="page">
-    <!-- <view class="header">
-      <view class="header-title">账单与预存</view>
-      <view class="header-sub">费用明细与账户余额实时查看</view>
-    </view> -->
-
     <view class="content">
       <!-- 余额卡片 -->
       <view class="balance-card">
@@ -108,19 +103,6 @@ onPullDownRefresh(() => { load().finally(() => uni.stopPullDownRefresh()) })
 </script>
 
 <style scoped lang="scss">
-.page {
-  min-height: 100vh;
-  background: #f5f7fa;
-}
-
-/* .header { background: linear-gradient(135deg, #3b7cff, #5e9bff); padding: 40rpx 30rpx 60rpx; color: #fff;
-  .header-title { font-size: 40rpx; font-weight: bold; }
-  .header-sub { font-size: 26rpx; opacity: 0.85; margin-top: 10rpx; } } */
-.content {
-  padding: 0 24rpx 40rpx;
-  margin-top: 30rpx;
-}
-
 .balance-card {
   background: linear-gradient(135deg, #3b7cff, #5e9bff);
   border-radius: 24rpx;

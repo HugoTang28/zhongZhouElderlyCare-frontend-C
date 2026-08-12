@@ -111,19 +111,6 @@ onPullDownRefresh(() => { load().finally(() => uni.stopPullDownRefresh()) })
 </script>
 
 <style scoped lang="scss">
-.page {
-  min-height: 100vh;
-  background: #f5f7fa;
-}
-
-/* .header { background: linear-gradient(135deg, #3b7cff, #5e9bff); padding: 40rpx 30rpx 60rpx; color: #fff;
-  .header-title { font-size: 40rpx; font-weight: bold; }
-  .header-sub { font-size: 26rpx; opacity: 0.85; margin-top: 10rpx; } } */
-.content {
-  padding: 0 24rpx 40rpx;
-  margin-top: 30rpx;
-}
-
 .summary {
   font-size: 26rpx;
   color: #666;

@@ -1,10 +1,5 @@
 <template>
   <view class="page">
-    <!-- <view class="header">
-      <view class="header-title">探视记录</view>
-      <view class="header-sub">预约与来访登记一目了然</view>
-    </view> -->
-
     <view class="content">
       <view v-if="loading" class="state-box">
         <view class="spinner"></view>
@@ -98,33 +93,6 @@ onPullDownRefresh(() => { load().finally(() => uni.stopPullDownRefresh()) })
 </script>
 
 <style scoped lang="scss">
-.page {
-  min-height: 100vh;
-  background: #f5f7fa;
-}
-
-.header {
-  background: linear-gradient(135deg, #3b7cff, #5e9bff);
-  padding: 40rpx 30rpx 60rpx;
-  color: #fff;
-
-  &-title {
-    font-size: 40rpx;
-    font-weight: bold;
-  }
-
-  &-sub {
-    font-size: 26rpx;
-    opacity: 0.85;
-    margin-top: 10rpx;
-  }
-}
-
-.content {
-  padding: 0 24rpx 40rpx;
-  margin-top: 30rpx;
-}
-
 .section {
   margin-bottom: 30rpx;
 

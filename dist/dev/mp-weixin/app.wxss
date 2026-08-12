@@ -44,4 +44,12 @@ view, text, input, button { box-sizing: border-box;
 to { transform: rotate(360deg);
 }
 }
-page{--status-bar-height:25px;--top-window-height:0px;--window-top:0px;--window-bottom:0px;--window-left:0px;--window-right:0px;--window-magin:0px}[data-c-h="true"]{display: none !important;}
+
+/* uni-app 全局样式变量 */
+.page {
+  min-height: 100vh;
+  background: #f5f7fa;
+}
+.page .content {
+  padding: 30rpx 24rpx;
+}page{--status-bar-height:25px;--top-window-height:0px;--window-top:0px;--window-bottom:0px;--window-left:0px;--window-right:0px;--window-magin:0px}[data-c-h="true"]{display: none !important;}

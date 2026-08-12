@@ -94,16 +94,6 @@ onPullDownRefresh(() => { load().finally(() => uni.stopPullDownRefresh()) })
 </script>
 
 <style scoped lang="scss">
-.page {
-  min-height: 100vh;
-  background: #f5f7fa;
-}
-
-.content {
-  padding: 0 24rpx 40rpx;
-  margin-top: 30rpx;
-}
-
 .section {
   margin-bottom: 30rpx;
 

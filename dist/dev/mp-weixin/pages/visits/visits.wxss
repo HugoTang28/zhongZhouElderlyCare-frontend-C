@@ -1,26 +1,4 @@
 /* uni-app 全局样式变量 */
-.page.data-v-367d0dd2 {
-  min-height: 100vh;
-  background: #f5f7fa;
-}
-.header.data-v-367d0dd2 {
-  background: linear-gradient(135deg, #3b7cff, #5e9bff);
-  padding: 40rpx 30rpx 60rpx;
-  color: #fff;
-}
-.header-title.data-v-367d0dd2 {
-  font-size: 40rpx;
-  font-weight: bold;
-}
-.header-sub.data-v-367d0dd2 {
-  font-size: 26rpx;
-  opacity: 0.85;
-  margin-top: 10rpx;
-}
-.content.data-v-367d0dd2 {
-  padding: 0 24rpx 40rpx;
-  margin-top: 30rpx;
-}
 .section.data-v-367d0dd2 {
   margin-bottom: 30rpx;
 }
