@@ -9268,7 +9268,7 @@ const mpMixin = defineMixin({
     virtualHost: true
   }
 });
-function colorGradient(startColor = "rgb(0, 0, 0)", endColor = "rgb(255, 255, 255)", step = 10) {
+function colorGradient$1(startColor = "rgb(0, 0, 0)", endColor = "rgb(255, 255, 255)", step = 10) {
   const startRGB = hexToRgb(startColor, false);
   const startR = startRGB[0];
   const startG = startRGB[1];
@@ -9372,8 +9372,8 @@ function colorToRgba(color2, alpha) {
   }
   return sColor;
 }
-const colorGradient$1 = {
-  colorGradient,
+const colorGradient = {
+  colorGradient: colorGradient$1,
   hexToRgb,
   rgbToHex,
   colorToRgba
@@ -10253,11 +10253,11 @@ if (typeof index$1 !== "undefined" && index$1 && index$1.upuiParams) {
     setConfig$1(temp.options);
   }
 }
-let platform = "none";
-platform = "vue3";
-platform = "mp";
-platform = "weixin";
-const platform$1 = platform;
+let platform$1 = "none";
+platform$1 = "vue3";
+platform$1 = "mp";
+platform$1 = "weixin";
+const platform = platform$1;
 const iconFontFamily = "uicon-iconfont";
 let params = {
   loaded: false
@@ -11152,10 +11152,10 @@ const $u = {
   route,
   date: index.timeFormat,
   // 另名date
-  colorGradient: colorGradient$1.colorGradient,
-  hexToRgb: colorGradient$1.hexToRgb,
-  rgbToHex: colorGradient$1.rgbToHex,
-  colorToRgba: colorGradient$1.colorToRgba,
+  colorGradient: colorGradient.colorGradient,
+  hexToRgb: colorGradient.hexToRgb,
+  rgbToHex: colorGradient.rgbToHex,
+  colorToRgba: colorGradient.colorToRgba,
   test,
   type: themeType,
   http,
@@ -11170,7 +11170,7 @@ const $u = {
   props: props$8,
   ...index,
   color: color$2,
-  platform: platform$1,
+  platform,
   theme: themeState,
   setTheme,
   setThemePreference,
@@ -17613,7 +17613,7 @@ exports.addStyle = addStyle;
 exports.addUnit = addUnit;
 exports.buttonMixin = buttonMixin;
 exports.color = color$2;
-exports.colorGradient = colorGradient;
+exports.colorGradient = colorGradient$1;
 exports.config = config$2;
 exports.createSSRApp = createSSRApp;
 exports.deepClone = deepClone;

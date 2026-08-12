@@ -120,18 +120,18 @@ onPullDownRefresh(() => { load().finally(() => uni.stopPullDownRefresh()) })
   margin-bottom: 30rpx;
   box-shadow: 0 8rpx 24rpx rgba(59, 124, 255, 0.25);
 
-  &-label {
+  .balance-label {
     font-size: 26rpx;
     opacity: 0.9;
   }
 
-  &-value {
+  .balance-value {
     font-size: 64rpx;
     font-weight: bold;
     margin-top: 12rpx;
   }
 
-  &-tip {
+  .balance-tip {
     font-size: 24rpx;
     opacity: 0.75;
     margin-top: 10rpx;
@@ -141,28 +141,25 @@ onPullDownRefresh(() => { load().finally(() => uni.stopPullDownRefresh()) })
 .section {
   margin-bottom: 30rpx;
 
-  &-title {
+  .section-title {
     display: flex;
     align-items: center;
     font-size: 30rpx;
     font-weight: bold;
     color: #333;
     margin-bottom: 20rpx;
-  }
-}
-
-.dot {
-  width: 16rpx;
-  height: 16rpx;
-  border-radius: 50%;
-  margin-right: 12rpx;
-
-  &.red {
-    background: #ff6b6b;
-  }
-
-  &.blue {
-    background: #3b7cff;
+    .dot {
+      width: 16rpx;
+      height: 16rpx;
+      border-radius: 50%;
+      margin-right: 12rpx;
+      &.red {
+        background: #ff6b6b;
+      }
+      &.blue {
+        background: #3b7cff;
+      }
+    }
   }
 }
 
@@ -173,116 +170,118 @@ onPullDownRefresh(() => { load().finally(() => uni.stopPullDownRefresh()) })
   margin-bottom: 20rpx;
   box-shadow: 0 4rpx 20rpx rgba(0, 0, 0, 0.06);
 
-  &-top {
+  .card-top {
     display: flex;
     justify-content: space-between;
     align-items: center;
     margin-bottom: 20rpx;
+
+    .card-title {
+      font-size: 30rpx;
+      font-weight: bold;
+      color: #1a1a1a;
+    }
+
+    .amount {
+      font-size: 34rpx;
+      font-weight: bold;
+
+      &.unpaid {
+        color: #ff6b6b;
+      }
+
+      &.paid {
+        color: #07c160;
+      }
+
+      &.refund {
+        color: #ff9900;
+      }
+    }
   }
 
-  &-title {
-    font-size: 30rpx;
-    font-weight: bold;
-    color: #1a1a1a;
-  }
-
-  &-body {
+  .card-body {
     border-top: 1rpx solid #f5f5f5;
     padding-top: 16rpx;
+
+    .row {
+      display: flex;
+      justify-content: space-between;
+      padding: 12rpx 0;
+
+      .label {
+        color: #999;
+        font-size: 26rpx;
+      }
+
+      .value {
+        color: #333;
+        font-size: 26rpx;
+        font-weight: 500;
+
+        &.unpaid {
+          color: #ff6b6b;
+        }
+
+        &.paid {
+          color: #07c160;
+        }
+
+        &.refund {
+          color: #ff9900;
+        }
+      }
+    }
   }
 }
 
-.amount {
-  font-size: 34rpx;
-  font-weight: bold;
-
-  &.unpaid {
-    color: #ff6b6b;
-  }
-
-  &.paid {
-    color: #07c160;
-  }
-
-  &.refund {
-    color: #ff9900;
-  }
-}
-
-.row {
+.flow-item {
+  background: #fff;
+  border-radius: 24rpx;
+  padding: 28rpx;
+  margin-bottom: 20rpx;
   display: flex;
   justify-content: space-between;
-  padding: 12rpx 0;
-}
-.label {
-  color: #999;
-  font-size: 26rpx;
-}
+  align-items: center;
+  box-shadow: 0 4rpx 20rpx rgba(0, 0, 0, 0.06);
 
-.value {
-  color: #333;
-  font-size: 26rpx;
-  font-weight: 500;
-
-  &.unpaid {
-    color: #ff6b6b;
-  }
-
-  &.paid {
-    color: #07c160;
-  }
-
-  &.refund {
-    color: #ff9900;
-  }
-}
-
-.flow {
-  &-item {
-    background: #fff;
-    border-radius: 24rpx;
-    padding: 28rpx;
-    margin-bottom: 20rpx;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    box-shadow: 0 4rpx 20rpx rgba(0, 0, 0, 0.06);
-  }
-
-  &-title {
-    font-size: 30rpx;
-    color: #1a1a1a;
-    font-weight: bold;
-  }
-
-  &-time {
-    font-size: 24rpx;
-    color: #999;
-    margin-top: 8rpx;
-  }
-
-  &-amount {
-    font-size: 34rpx;
-    font-weight: bold;
-    text-align: right;
-
-    &.in {
-      color: #07c160;
+  .flow-left {
+    .flow-title {
+      font-size: 30rpx;
+      color: #1a1a1a;
+      font-weight: bold;
     }
 
-    &.out {
-      color: #ff6b6b;
+    .flow-time {
+      font-size: 24rpx;
+      color: #999;
+      margin-top: 8rpx;
     }
   }
 
-  &-balance {
-    font-size: 24rpx;
-    color: #999;
-    margin-top: 6rpx;
-    text-align: right;
+  .flow-right {
+    .flow-amount {
+      font-size: 34rpx;
+      font-weight: bold;
+      text-align: right;
+
+      &.in {
+        color: #07c160;
+      }
+
+      &.out {
+        color: #ff6b6b;
+      }
+    }
+
+    .flow-balance {
+      font-size: 24rpx;
+      color: #999;
+      margin-top: 6rpx;
+      text-align: right;
+    }
   }
 }
-
 .state-box {
   display: flex;
   justify-content: center;

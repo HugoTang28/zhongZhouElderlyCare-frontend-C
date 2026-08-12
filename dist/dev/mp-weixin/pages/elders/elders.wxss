@@ -1,9 +1,4 @@
 /* uni-app 全局样式变量 */
-.summary.data-v-18f9d8a6 {
-  font-size: 26rpx;
-  color: #666;
-  margin: 24rpx 8rpx 8rpx;
-}
 .elder-card.data-v-18f9d8a6 {
   background: #fff;
   border-radius: 24rpx;
@@ -11,14 +6,14 @@
   margin-bottom: 24rpx;
   box-shadow: 0 4rpx 20rpx rgba(0, 0, 0, 0.06);
 }
-.card-head.data-v-18f9d8a6 {
+.elder-card .card-head.data-v-18f9d8a6 {
   display: flex;
   align-items: center;
   margin-bottom: 28rpx;
   padding-bottom: 24rpx;
   border-bottom: 1rpx solid #f0f2f5;
 }
-.avatar.data-v-18f9d8a6 {
+.elder-card .card-head .avatar.data-v-18f9d8a6 {
   width: 104rpx;
   height: 104rpx;
   border-radius: 50%;
@@ -33,32 +28,51 @@
   border: 4rpx solid #fff;
   box-shadow: 0 8rpx 18rpx rgba(59, 124, 255, 0.3);
 }
-.head-info.data-v-18f9d8a6 {
+.elder-card .card-head .head-info.data-v-18f9d8a6 {
   flex: 1;
   min-width: 0;
 }
-.card-arrow.data-v-18f9d8a6 {
-  color: #c5ccd6;
-  font-size: 44rpx;
-  line-height: 1;
-  margin-left: 12rpx;
-}
-.name-line.data-v-18f9d8a6 {
+.elder-card .card-head .head-info .name-line.data-v-18f9d8a6 {
   display: flex;
   align-items: center;
 }
-.name.data-v-18f9d8a6 {
+.elder-card .card-head .head-info .name-line .name.data-v-18f9d8a6 {
   font-size: 36rpx;
   font-weight: bold;
   color: #1a1a1a;
   margin-right: 16rpx;
 }
-.meta.data-v-18f9d8a6 {
+.elder-card .card-head .head-info .meta.data-v-18f9d8a6 {
   font-size: 26rpx;
   color: #666;
   margin-top: 8rpx;
 }
-.card-foot.data-v-18f9d8a6 {
+.elder-card .info-grid.data-v-18f9d8a6 {
+  display: flex;
+  flex-wrap: wrap;
+}
+.elder-card .info-grid .info-item.data-v-18f9d8a6 {
+  width: 50%;
+  padding: 16rpx 0;
+  box-sizing: border-box;
+}
+.elder-card .info-grid .info-item.data-v-18f9d8a6:nth-child(odd) {
+  padding-right: 16rpx;
+}
+.elder-card .info-grid .info-item .info-label.data-v-18f9d8a6 {
+  display: block;
+  font-size: 24rpx;
+  color: #999;
+  margin-bottom: 6rpx;
+}
+.elder-card .info-grid .info-item .info-value.data-v-18f9d8a6 {
+  display: block;
+  font-size: 28rpx;
+  color: #333;
+  font-weight: 500;
+  word-break: break-all;
+}
+.elder-card .card-foot.data-v-18f9d8a6 {
   margin-top: 26rpx;
   padding-top: 22rpx;
   border-top: 1rpx solid #f0f2f5;
@@ -68,40 +82,12 @@
   font-size: 24rpx;
   color: #9aa0a6;
 }
-.card-foot .card-arrow.data-v-18f9d8a6 {
-  font-size: 36rpx;
-}
-.info-grid.data-v-18f9d8a6 {
-  display: flex;
-  flex-wrap: wrap;
-}
-.info-item.data-v-18f9d8a6 {
-  width: 50%;
-  padding: 16rpx 0;
-  box-sizing: border-box;
-}
-.info-item.data-v-18f9d8a6:nth-child(odd) {
-  padding-right: 16rpx;
-}
-.info-label.data-v-18f9d8a6 {
-  display: block;
-  font-size: 24rpx;
-  color: #999;
-  margin-bottom: 6rpx;
-}
-.info-value.data-v-18f9d8a6 {
-  display: block;
-  font-size: 28rpx;
-  color: #333;
-  font-weight: 500;
-  word-break: break-all;
-}
 .state-box.data-v-18f9d8a6 {
   display: flex;
   justify-content: center;
   padding: 120rpx 40rpx;
 }
-.state-tip.data-v-18f9d8a6 {
+.state-box .state-tip.data-v-18f9d8a6 {
   display: block;
   font-size: 24rpx;
   color: #999;

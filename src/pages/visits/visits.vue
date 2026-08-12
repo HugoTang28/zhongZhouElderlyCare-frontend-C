@@ -97,28 +97,25 @@ onPullDownRefresh(() => { load().finally(() => uni.stopPullDownRefresh()) })
 .section {
   margin-bottom: 30rpx;
 
-  &-title {
+  .section-title {
     display: flex;
     align-items: center;
     font-size: 30rpx;
     font-weight: bold;
     color: #333;
     margin-bottom: 20rpx;
-  }
-}
-
-.dot {
-  width: 16rpx;
-  height: 16rpx;
-  border-radius: 50%;
-  margin-right: 12rpx;
-
-  &.blue {
-    background: #3b7cff;
-  }
-
-  &.green {
-    background: #07c160;
+    .dot {
+      width: 16rpx;
+      height: 16rpx;
+      border-radius: 50%;
+      margin-right: 12rpx;
+      &.blue {
+        background: #3b7cff;
+      }
+      &.green {
+        background: #07c160;
+      }
+    }
   }
 }
 
@@ -129,77 +126,45 @@ onPullDownRefresh(() => { load().finally(() => uni.stopPullDownRefresh()) })
   margin-bottom: 20rpx;
   box-shadow: 0 4rpx 20rpx rgba(0, 0, 0, 0.06);
 
-  &-top {
+  .card-top {
     display: flex;
     justify-content: space-between;
     align-items: center;
     margin-bottom: 20rpx;
+
+    .card-title {
+      font-size: 32rpx;
+      font-weight: bold;
+      color: #1a1a1a;
+    }
   }
 
-  &-title {
-    font-size: 32rpx;
-    font-weight: bold;
-    color: #1a1a1a;
-  }
-
-  &-body {
+  .card-body {
     border-top: 1rpx solid #f5f5f5;
     padding-top: 16rpx;
+
+    .row {
+      display: flex;
+      justify-content: space-between;
+      padding: 12rpx 0;
+
+      .label {
+        color: #999;
+        font-size: 26rpx;
+      }
+
+      .value {
+        color: #333;
+        font-size: 26rpx;
+        font-weight: 500;
+
+        &.time {
+          color: #3b7cff;
+        }
+      }
+    }
   }
 }
-
-.tag {
-  font-size: 22rpx;
-  padding: 6rpx 16rpx;
-  border-radius: 20rpx;
-}
-
-.wait {
-  background: #fff5e6;
-  color: #ff9900;
-}
-
-.pass {
-  background: #e6f7ed;
-  color: #07c160;
-}
-
-.reject {
-  background: #ffebeb;
-  color: #ff4d4f;
-}
-
-.cancel {
-  background: #f2f2f2;
-  color: #999;
-}
-
-.grey {
-  background: #f2f2f2;
-  color: #666;
-}
-
-.row {
-  display: flex;
-  justify-content: space-between;
-  padding: 12rpx 0;
-}
-
-.label {
-  color: #999;
-  font-size: 26rpx;
-}
-
-.value {
-  color: #333;
-  font-size: 26rpx;
-  font-weight: 500;
-
-  &.time {
-    color: #3b7cff;
-  }
-}
-
 .state-box {
   display: flex;
   justify-content: center;

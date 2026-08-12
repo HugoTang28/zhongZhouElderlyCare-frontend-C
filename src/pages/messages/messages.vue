@@ -117,45 +117,42 @@ onPullDownRefresh(() => { load().finally(() => uni.stopPullDownRefresh()) })
 <style scoped lang="scss">
 .section {
   margin-bottom: 30rpx;
-
-  &-title {
+  .section-title {
     display: flex;
     align-items: center;
     font-size: 30rpx;
     font-weight: bold;
     color: #333;
     margin-bottom: 20rpx;
+
+    .dot {
+      width: 16rpx;
+      height: 16rpx;
+      border-radius: 50%;
+      margin-right: 12rpx;
+
+      &.blue {
+        background: #3b7cff;
+      }
+
+      &.red {
+        background: #ff6b6b;
+      }
+
+      &.green {
+        background: #07c160;
+      }
+    }
   }
 }
 
-.dot {
-  width: 16rpx;
-  height: 16rpx;
-  border-radius: 50%;
-  margin-right: 12rpx;
+.msg-list {
+  background: #fff;
+  border-radius: 24rpx;
+  padding: 12rpx 24rpx;
+  box-shadow: 0 4rpx 20rpx rgba(0, 0, 0, 0.06);
 
-  &.blue {
-    background: #3b7cff;
-  }
-
-  &.red {
-    background: #ff6b6b;
-  }
-
-  &.green {
-    background: #07c160;
-  }
-}
-
-.msg {
-  &-list {
-    background: #fff;
-    border-radius: 24rpx;
-    padding: 12rpx 24rpx;
-    box-shadow: 0 4rpx 20rpx rgba(0, 0, 0, 0.06);
-  }
-
-  &-item {
+  .msg-item {
     display: flex;
     padding: 24rpx 0;
     border-bottom: 1rpx solid #f5f5f5;
@@ -163,61 +160,61 @@ onPullDownRefresh(() => { load().finally(() => uni.stopPullDownRefresh()) })
     &:last-child {
       border-bottom: none;
     }
-  }
 
-  &-icon {
-    width: 72rpx;
-    height: 72rpx;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 34rpx;
-    margin-right: 20rpx;
-    flex-shrink: 0;
+    .msg-icon {
+      width: 72rpx;
+      height: 72rpx;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 34rpx;
+      margin-right: 20rpx;
+      flex-shrink: 0;
 
-    &.visit {
-      background: #e6f0ff;
+      &.visit {
+        background: #e6f0ff;
+      }
+
+      &.care {
+        background: #e6f7ed;
+      }
+
+      &.finance {
+        background: #fff5e6;
+      }
+
+      &.bill {
+        background: #f2f2f2;
+      }
+
+      &.system {
+        background: #f0f0f0;
+      }
     }
 
-    &.care {
-      background: #e6f7ed;
+    .msg-body {
+      flex: 1;
+
+      .msg-title {
+        font-size: 30rpx;
+        font-weight: bold;
+        color: #1a1a1a;
+      }
+
+      .msg-content {
+        font-size: 26rpx;
+        color: #666;
+        margin-top: 8rpx;
+        line-height: 1.5;
+      }
+
+      .msg-time {
+        font-size: 22rpx;
+        color: #999;
+        margin-top: 10rpx;
+      }
     }
-
-    &.finance {
-      background: #fff5e6;
-    }
-
-    &.bill {
-      background: #f2f2f2;
-    }
-
-    &.system {
-      background: #f0f0f0;
-    }
-  }
-
-  &-body {
-    flex: 1;
-  }
-
-  &-title {
-    font-size: 30rpx;
-    font-weight: bold;
-    color: #1a1a1a;
-  }
-
-  &-content {
-    font-size: 26rpx;
-    color: #666;
-    margin-top: 8rpx;
-    line-height: 1.5;
-  }
-
-  &-time {
-    font-size: 22rpx;
-    color: #999;
-    margin-top: 10rpx;
   }
 }
 
@@ -228,61 +225,48 @@ onPullDownRefresh(() => { load().finally(() => uni.stopPullDownRefresh()) })
   margin-bottom: 20rpx;
   box-shadow: 0 4rpx 20rpx rgba(0, 0, 0, 0.06);
 
-  &-top {
+  .card-top {
     display: flex;
     justify-content: space-between;
     align-items: center;
     margin-bottom: 20rpx;
+
+    .card-title {
+      font-size: 30rpx;
+      font-weight: bold;
+      color: #1a1a1a;
+    }
   }
 
-  &-title {
-    font-size: 30rpx;
-    font-weight: bold;
-    color: #1a1a1a;
-  }
-
-  &-body {
+  .card-body {
     border-top: 1rpx solid #f5f5f5;
     padding-top: 16rpx;
+
+    .row {
+      display: flex;
+      justify-content: space-between;
+      padding: 12rpx 0;
+
+      .label {
+        color: #999;
+        font-size: 26rpx;
+      }
+
+      .value {
+        color: #333;
+        font-size: 26rpx;
+        font-weight: 500;
+      }
+    }
   }
 }
 
-.tag {
-  font-size: 22rpx;
-  padding: 6rpx 16rpx;
-  border-radius: 20rpx;
-
-  &.red {
-    background: #ffebeb;
-    color: #ff4d4f;
-  }
-}
-
-.row {
+.device-grid {
   display: flex;
-  justify-content: space-between;
-  padding: 12rpx 0;
-}
+  flex-wrap: wrap;
+  gap: 20rpx;
 
-.label {
-  color: #999;
-  font-size: 26rpx;
-}
-
-.value {
-  color: #333;
-  font-size: 26rpx;
-  font-weight: 500;
-}
-
-.device {
-  &-grid {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 20rpx;
-  }
-
-  &-item {
+  .device-item {
     width: calc((100% - 20rpx) / 2);
     background: #fff;
     border-radius: 24rpx;
@@ -290,40 +274,17 @@ onPullDownRefresh(() => { load().finally(() => uni.stopPullDownRefresh()) })
     margin-bottom: 0;
     box-shadow: 0 4rpx 20rpx rgba(0, 0, 0, 0.06);
     box-sizing: border-box;
-  }
 
-  &-name {
-    font-size: 30rpx;
-    font-weight: bold;
-    color: #1a1a1a;
-  }
-
-  &-type {
-    font-size: 24rpx;
-    color: #999;
-    margin-top: 8rpx;
-  }
-
-  &-status {
-    display: inline-block;
-    font-size: 22rpx;
-    padding: 4rpx 14rpx;
-    border-radius: 20rpx;
-    margin-top: 16rpx;
-
-    &.online {
-      background: #e6f7ed;
-      color: #07c160;
+    .device-name {
+      font-size: 30rpx;
+      font-weight: bold;
+      color: #1a1a1a;
     }
 
-    &.offline {
-      background: #f2f2f2;
+    .device-type {
+      font-size: 24rpx;
       color: #999;
-    }
-
-    &.fault {
-      background: #ffebeb;
-      color: #ff4d4f;
+      margin-top: 8rpx;
     }
   }
 }

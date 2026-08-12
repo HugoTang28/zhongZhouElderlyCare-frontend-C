@@ -107,119 +107,99 @@ onPullDownRefresh(() => { load().finally(() => uni.stopPullDownRefresh()) })
 </script>
 
 <style scoped lang="scss">
-.summary {
-  font-size: 26rpx;
-  color: #666;
-  margin: 24rpx 8rpx 8rpx;
-}
-
 .elder-card {
   background: #fff;
   border-radius: 24rpx;
   padding: 32rpx;
   margin-bottom: 24rpx;
   box-shadow: 0 4rpx 20rpx rgba(0, 0, 0, 0.06);
-}
 
-.card-head {
-  display: flex;
-  align-items: center;
-  margin-bottom: 28rpx;
-  padding-bottom: 24rpx;
-  border-bottom: 1rpx solid #f0f2f5;
-}
-
-.avatar {
-  width: 104rpx;
-  height: 104rpx;
-  border-radius: 50%;
-  background: linear-gradient(135deg, #3b7cff, #5e9bff);
-  color: #fff;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 44rpx;
-  font-weight: 600;
-  margin-right: 24rpx;
-  border: 4rpx solid #fff;
-  box-shadow: 0 8rpx 18rpx rgba(59, 124, 255, 0.3);
-}
-
-.head-info {
-  flex: 1;
-  min-width: 0;
-}
-
-.card-arrow {
-  color: #c5ccd6;
-  font-size: 44rpx;
-  line-height: 1;
-  margin-left: 12rpx;
-}
-
-.name-line {
-  display: flex;
-  align-items: center;
-}
-
-.name {
-  font-size: 36rpx;
-  font-weight: bold;
-  color: #1a1a1a;
-  margin-right: 16rpx;
-}
-
-
-.meta {
-  font-size: 26rpx;
-  color: #666;
-  margin-top: 8rpx;
-}
-
-.card-foot {
-  margin-top: 26rpx;
-  padding-top: 22rpx;
-  border-top: 1rpx solid #f0f2f5;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  font-size: 24rpx;
-  color: #9aa0a6;
-
-  .card-arrow {
-    font-size: 36rpx;
-  }
-}
-
-.info {
-  &-grid {
+  .card-head {
     display: flex;
-    flex-wrap: wrap;
-  }
+    align-items: center;
+    margin-bottom: 28rpx;
+    padding-bottom: 24rpx;
+    border-bottom: 1rpx solid #f0f2f5;
 
-  &-item {
-    width: 50%;
-    padding: 16rpx 0;
-    box-sizing: border-box;
+    .avatar {
+      width: 104rpx;
+      height: 104rpx;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #3b7cff, #5e9bff);
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 44rpx;
+      font-weight: 600;
+      margin-right: 24rpx;
+      border: 4rpx solid #fff;
+      box-shadow: 0 8rpx 18rpx rgba(59, 124, 255, 0.3);
+    }
 
-    &:nth-child(odd) {
-      padding-right: 16rpx;
+    .head-info {
+      flex: 1;
+      min-width: 0;
+
+      .name-line {
+        display: flex;
+        align-items: center;
+
+        .name {
+          font-size: 36rpx;
+          font-weight: bold;
+          color: #1a1a1a;
+          margin-right: 16rpx;
+        }
+      }
+
+      .meta {
+        font-size: 26rpx;
+        color: #666;
+        margin-top: 8rpx;
+      }
     }
   }
 
-  &-label {
-    display: block;
-    font-size: 24rpx;
-    color: #999;
-    margin-bottom: 6rpx;
+  .info-grid {
+    display: flex;
+    flex-wrap: wrap;
+
+    .info-item {
+      width: 50%;
+      padding: 16rpx 0;
+      box-sizing: border-box;
+
+      &:nth-child(odd) {
+        padding-right: 16rpx;
+      }
+
+      .info-label {
+        display: block;
+        font-size: 24rpx;
+        color: #999;
+        margin-bottom: 6rpx;
+      }
+
+      .info-value {
+        display: block;
+        font-size: 28rpx;
+        color: #333;
+        font-weight: 500;
+        word-break: break-all;
+      }
+    }
   }
 
-  &-value {
-    display: block;
-    font-size: 28rpx;
-    color: #333;
-    font-weight: 500;
-    word-break: break-all;
+  .card-foot {
+    margin-top: 26rpx;
+    padding-top: 22rpx;
+    border-top: 1rpx solid #f0f2f5;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 24rpx;
+    color: #9aa0a6;
   }
 }
 
@@ -227,12 +207,11 @@ onPullDownRefresh(() => { load().finally(() => uni.stopPullDownRefresh()) })
   display: flex;
   justify-content: center;
   padding: 120rpx 40rpx;
-}
-
-.state-tip {
+  .state-tip {
   display: block;
   font-size: 24rpx;
   color: #999;
   margin-top: 12rpx;
+}
 }
 </style>

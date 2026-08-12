@@ -100,28 +100,25 @@ onPullDownRefresh(() => { load().finally(() => uni.stopPullDownRefresh()) })
 .section {
   margin-bottom: 30rpx;
 
-  &-title {
+  .section-title {
     display: flex;
     align-items: center;
     font-size: 30rpx;
     font-weight: bold;
     color: #333;
     margin-bottom: 20rpx;
-  }
-}
-
-.dot {
-  width: 16rpx;
-  height: 16rpx;
-  border-radius: 50%;
-  margin-right: 12rpx;
-
-  &.purple {
-    background: #8e44ad;
-  }
-
-  &.blue {
-    background: #3b7cff;
+    .dot {
+      width: 16rpx;
+      height: 16rpx;
+      border-radius: 50%;
+      margin-right: 12rpx;
+      &.purple {
+        background: #8e44ad;
+      }
+      &.blue {
+        background: #3b7cff;
+      }
+    }
   }
 }
 
@@ -131,81 +128,43 @@ onPullDownRefresh(() => { load().finally(() => uni.stopPullDownRefresh()) })
   padding: 28rpx;
   margin-bottom: 20rpx;
   box-shadow: 0 4rpx 20rpx rgba(0, 0, 0, 0.06);
-
-  &-top {
+  .card-top {
     display: flex;
     justify-content: space-between;
     align-items: center;
     margin-bottom: 20rpx;
+    .card-title {
+      font-size: 30rpx;
+      font-weight: bold;
+      color: #1a1a1a;
+    }
   }
 
-  &-title {
-    font-size: 30rpx;
-    font-weight: bold;
-    color: #1a1a1a;
-  }
-
-  &-body {
+  .card-body {
     border-top: 1rpx solid #f5f5f5;
     padding-top: 16rpx;
+
+    .row {
+      display: flex;
+      justify-content: space-between;
+      padding: 12rpx 0;
+
+      .label {
+        color: #999;
+        font-size: 26rpx;
+      }
+
+      .value {
+        color: #333;
+        font-size: 26rpx;
+        font-weight: 500;
+        text-align: right;
+        flex: 1;
+        margin-left: 20rpx;
+        word-break: break-all;
+      }
+    }
   }
-}
-
-.tag {
-  font-size: 22rpx;
-  padding: 6rpx 16rpx;
-  border-radius: 20rpx;
-}
-
-.doing {
-  background: #e6f0ff;
-  color: #3b7cff;
-}
-
-.done {
-  background: #e6f7ed;
-  color: #07c160;
-}
-
-.pause {
-  background: #fff5e6;
-  color: #ff9900;
-}
-
-.wait {
-  background: #f2f2f2;
-  color: #666;
-}
-
-.cancel {
-  background: #ffebeb;
-  color: #ff4d4f;
-}
-
-.grey {
-  background: #f2f2f2;
-  color: #999;
-}
-
-.row {
-  display: flex;
-  justify-content: space-between;
-  padding: 12rpx 0;
-}
-
-.label {
-  color: #999;
-  font-size: 26rpx;
-}
-
-.value {
-  color: #333;
-  font-size: 26rpx;
-  font-weight: 500;
-  text-align: right;
-  flex: 1;
-  margin-left: 20rpx;
-  word-break: break-all;
 }
 
 .timeline {
@@ -214,7 +173,7 @@ onPullDownRefresh(() => { load().finally(() => uni.stopPullDownRefresh()) })
   padding: 28rpx;
   box-shadow: 0 4rpx 20rpx rgba(0, 0, 0, 0.06);
 
-  &-item {
+  .timeline-item {
     display: flex;
     padding-bottom: 30rpx;
     position: relative;
@@ -232,63 +191,37 @@ onPullDownRefresh(() => { load().finally(() => uni.stopPullDownRefresh()) })
       width: 2rpx;
       background: #e6e6e6;
     }
-  }
 
-  &-dot {
-    width: 24rpx;
-    height: 24rpx;
-    border-radius: 50%;
-    margin-right: 20rpx;
-    margin-top: 6rpx;
-    flex-shrink: 0;
-
-    &.wait {
-      background: #ccc;
+    .timeline-dot {
+      width: 24rpx;
+      height: 24rpx;
+      border-radius: 50%;
+      margin-right: 20rpx;
+      margin-top: 6rpx;
+      flex-shrink: 0;
     }
 
-    &.doing {
-      background: #3b7cff;
+    .timeline-content {
+      flex: 1;
+
+      .task-title {
+        font-size: 30rpx;
+        font-weight: bold;
+        color: #1a1a1a;
+      }
+
+      .task-meta {
+        font-size: 24rpx;
+        color: #666;
+        margin-top: 8rpx;
+      }
+
+      .task-time {
+        font-size: 24rpx;
+        color: #999;
+        margin-top: 6rpx;
+      }
     }
-
-    &.done {
-      background: #07c160;
-    }
-
-    &.cancel {
-      background: #ff4d4f;
-    }
-  }
-
-  &-content {
-    flex: 1;
-  }
-}
-
-.task {
-  &-title {
-    font-size: 30rpx;
-    font-weight: bold;
-    color: #1a1a1a;
-  }
-
-  &-meta {
-    font-size: 24rpx;
-    color: #666;
-    margin-top: 8rpx;
-  }
-
-  &-time {
-    font-size: 24rpx;
-    color: #999;
-    margin-top: 6rpx;
-  }
-
-  &-status {
-    display: inline-block;
-    font-size: 22rpx;
-    padding: 4rpx 14rpx;
-    border-radius: 20rpx;
-    margin-top: 12rpx;
   }
 }
 
