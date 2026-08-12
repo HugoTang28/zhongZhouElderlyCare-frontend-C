@@ -172,33 +172,8 @@
   background: #ffebeb;
   color: #ff4d4f;
 }
-.empty-mini.data-v-f5640984 {
-  text-align: center;
-  color: #999;
-  padding: 60rpx 0;
-  font-size: 28rpx;
-  background: #fff;
-  border-radius: 24rpx;
-}
 .state-box.data-v-f5640984 {
-  text-align: center;
+  display: flex;
+  justify-content: center;
   padding: 120rpx 40rpx;
-}
-.state-text.data-v-f5640984 {
-  font-size: 30rpx;
-  color: #666;
-}
-.spinner.data-v-f5640984 {
-  width: 60rpx;
-  height: 60rpx;
-  border: 4rpx solid #e6e6e6;
-  border-top-color: #3b7cff;
-  border-radius: 50%;
-  margin: 0 auto 20rpx;
-  animation: spin-f5640984 1s linear infinite;
-}
-@keyframes spin-f5640984 {
-to {
-    transform: rotate(360deg);
-}
 }

@@ -1,5 +1,9 @@
 {
   "navigationBarTitleText": "探视记录",
   "enablePullDownRefresh": true,
-  "usingComponents": {}
+  "usingComponents": {
+    "up-loading-icon": "../../node-modules/uview-plus/components/u-loading-icon/u-loading-icon",
+    "up-empty": "../../node-modules/uview-plus/components/u-empty/u-empty",
+    "up-tag": "../../node-modules/uview-plus/components/u-tag/u-tag"
+  }
 }

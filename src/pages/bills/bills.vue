@@ -9,8 +9,7 @@
       </view>
 
       <view v-if="loading" class="state-box">
-        <view class="spinner"></view>
-        <text class="state-text">正在加载账单...</text>
+        <up-loading-icon text="正在加载账单..." textSize="15" color="#3b7cff" textColor="#666"></up-loading-icon>
       </view>
 
       <view v-else>
@@ -20,7 +19,7 @@
             <text class="dot red"></text>
             <text>待缴 / 已缴账单</text>
           </view>
-          <view v-if="!bills.length" class="empty-mini">暂无账单</view>
+          <up-empty v-if="!bills.length" mode="list" text="暂无账单" marginTop="40"></up-empty>
           <view v-else class="card" v-for="(item, index) in bills" :key="'b'+index">
             <view class="card-top">
               <view class="card-title">{{ item.billType }}</view>
@@ -28,7 +27,10 @@
             </view>
             <view class="card-body">
               <view class="row"><text class="label">老人</text><text class="value">{{ item.elderName }}</text></view>
-              <view class="row"><text class="label">状态</text><zz-status-tag :text="item.statusText" :type="item.statusType" /></view>
+              <view class="row">
+                <text class="label">状态</text>
+                <up-tag :text="item.statusText" :bgColor="item.statusBg" :color="item.statusColor" :borderColor="item.statusBg" size="mini"></up-tag>
+              </view>
               <view class="row"><text class="label">账单周期</text><text class="value">{{ item.timeText }}</text></view>
             </view>
           </view>
@@ -40,7 +42,7 @@
             <text class="dot blue"></text>
             <text>预存流水</text>
           </view>
-          <view v-if="!prestore.length" class="empty-mini">暂无预存记录</view>
+          <up-empty v-if="!prestore.length" mode="list" text="暂无预存记录" marginTop="40"></up-empty>
           <view v-else class="flow-item" v-for="(item, index) in prestore" :key="'p'+index">
             <view class="flow-left">
               <view class="flow-title">{{ item.typeText }}</view>
@@ -71,6 +73,8 @@ const loading = ref(false)
 const billStatusTextMap = { 0: '未缴', 1: '已缴', 2: '退费' }
 const billStatusClsMap = { 0: 'unpaid', 1: 'paid', 2: 'refund' }
 const billStatusTypeMap = { 0: 'danger', 1: 'success', 2: 'warning' }
+const billStatusBgMap = { 0: '#ffebeb', 1: '#e6f9f0', 2: '#fff5e6' }
+const billStatusColorMap = { 0: '#ff4d4f', 1: '#07c160', 2: '#ff9900' }
 const prestoreTypeMap = { 0: '预存充值', 1: '费用扣款', 2: '退款' }
 
 function load() {
@@ -81,6 +85,8 @@ function load() {
       statusText: billStatusTextMap[it.status] || '未知',
       statusCls: billStatusClsMap[it.status] || 'unpaid',
       statusType: billStatusTypeMap[it.status] || 'danger',
+      statusBg: billStatusBgMap[it.status] || '#f5f7fa',
+      statusColor: billStatusColorMap[it.status] || '#999',
       timeText: it.billMonth || fmtTime(it.createTime)
     }))
     prestore.value = ((data && data.prestores) || []).map(it => ({
@@ -103,6 +109,9 @@ onPullDownRefresh(() => { load().finally(() => uni.stopPullDownRefresh()) })
 </script>
 
 <style scoped lang="scss">
+// :deep(.u-tag) {
+//   border: 3rpx solid #c7c1c1 !important;
+// }
 .balance-card {
   background: linear-gradient(135deg, #3b7cff, #5e9bff);
   border-radius: 24rpx;
@@ -205,7 +214,6 @@ onPullDownRefresh(() => { load().finally(() => uni.stopPullDownRefresh()) })
   justify-content: space-between;
   padding: 12rpx 0;
 }
-
 .label {
   color: #999;
   font-size: 26rpx;
@@ -275,38 +283,9 @@ onPullDownRefresh(() => { load().finally(() => uni.stopPullDownRefresh()) })
   }
 }
 
-.empty-mini {
-  text-align: center;
-  color: #999;
-  padding: 60rpx 0;
-  font-size: 28rpx;
-  background: #fff;
-  border-radius: 24rpx;
-}
-
 .state-box {
-  text-align: center;
+  display: flex;
+  justify-content: center;
   padding: 120rpx 40rpx;
-}
-
-.spinner {
-  width: 60rpx;
-  height: 60rpx;
-  border: 4rpx solid #e6e6e6;
-  border-top-color: #3b7cff;
-  border-radius: 50%;
-  margin: 0 auto 20rpx;
-  animation: spin 1s linear infinite;
-}
-
-@keyframes spin {
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-.state-text {
-  font-size: 30rpx;
-  color: #666;
 }
 </style>

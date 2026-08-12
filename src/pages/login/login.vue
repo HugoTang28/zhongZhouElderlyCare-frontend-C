@@ -13,19 +13,52 @@
 
     <!-- 登录卡片 -->
     <view class="form-card">
-      <view class="field" :class="{ focus: phoneFocus }">
-        <up-icon name="phone" size="20" class="field-icon"></up-icon>
-        <input class="field-input" v-model="phone" type="number" maxlength="11" placeholder="请输入手机号"
-               @focus="phoneFocus = true" @blur="phoneFocus = false" />
-      </view>
+      <up-form>
+        <up-form-item>
+          <up-input
+            v-model="phone"
+            type="number"
+            maxlength="11"
+            placeholder="请输入手机号"
+            border="none"
+            customStyle="background: #f4f6fb; border-radius: 18rpx; padding: 10rpx 24rpx; height: 96rpx;"
+          >
+            <template #prefix>
+              <up-icon name="phone" size="20" color="#3b7cff" customStyle="margin-right: 16rpx;"></up-icon>
+            </template>
+          </up-input>
+        </up-form-item>
 
-      <view class="field code" :class="{ focus: codeFocus }">
-        <input class="field-input" v-model="code" placeholder="请输入验证码"
-               @focus="codeFocus = true" @blur="codeFocus = false" />
-        <button class="code-btn" @click="getCode" :disabled="counting">{{ codeText }}</button>
-      </view>
+        <up-form-item>
+          <up-input
+            v-model="code"
+            placeholder="请输入验证码"
+            border="none"
+            customStyle="background: #f4f6fb; border-radius: 18rpx; padding: 10rpx 12rpx 10rpx 24rpx; height: 96rpx;"
+          >
+            <template #prefix>
+              <up-icon name="lock" size="20" color="#3b7cff" customStyle="margin-right: 16rpx;"></up-icon>
+            </template>
+            <template #suffix>
+              <up-button
+                @click="getCode"
+                :text="codeText"
+                :disabled="counting"
+                type="primary"
+                size="small"
+                customStyle="height: 72rpx; border-radius: 14rpx; background: #eaf1ff; color: #3b7cff; border: none; font-weight: 600;"
+              ></up-button>
+            </template>
+          </up-input>
+        </up-form-item>
+      </up-form>
 
-      <button class="login-btn" hover-class="login-btn--hover" @click="doLogin">登 录</button>
+      <up-button
+        @click="doLogin"
+        text="登 录"
+        type="primary"
+        customStyle="margin-top: 16rpx; height: 96rpx; background: linear-gradient(135deg, #3b7cff, #5e9bff); border: none; border-radius: 18rpx; font-size: 34rpx; font-weight: 700; letter-spacing: 4rpx; box-shadow: 0 14rpx 30rpx rgba(59, 124, 255, 0.32);"
+      ></up-button>
 
       <view v-if="devCode" class="dev-tip">
         <view class="dev-tip-row">
@@ -167,73 +200,11 @@ onUnload(() => {
   border-radius: 32rpx;
   padding: 48rpx 40rpx 44rpx;
   box-shadow: 0 20rpx 60rpx rgba(31, 52, 110, 0.12);
-  .field {
-    display: flex;
-    align-items: center;
-    background: #f4f6fb;
-    border: 2rpx solid transparent;
-    border-radius: 18rpx;
-    padding: 0 24rpx;
-    height: 96rpx;
-    margin-bottom: 28rpx;
-    transition: border-color , background-color 0.2s;
 
-    &.focus {
-      background: #fff;
-      border-color: #3b7cff;
-      box-shadow: 0 0 0 6rpx rgba(59, 124, 255, 0.1);
-    }
-
-    &-icon {
-      font-size: 34rpx;
-      margin-right: 16rpx;
-    }
-
-    &-input {
-      flex: 1;
-      height: 96rpx;
-      font-size: 30rpx;
-      color: #1a1a1a;
-    }
-
-    &.code {
-      padding-right: 12rpx;
-    }
-    .code-btn {
-      margin: 0;
-      padding: 0 24rpx;
-      height: 72rpx;
-      line-height: 72rpx;
-      background: #eaf1ff;
-      color: #3b7cff;
-      font-size: 26rpx;
-      font-weight: 600;
-      border-radius: 14rpx;
-
-      &[disabled] {
-        color: #aab6cc;
-        background: #f0f3f8;
-      }
-    }
+  :deep(.up-form-item__body) {
+    padding: 0 0 28rpx 0 !important;
   }
-  .login-btn {
-    margin-top: 16rpx;
-    height: 96rpx;
-    line-height: 96rpx;
-    background: linear-gradient(135deg, #3b7cff, #5e9bff);
-    color: #fff;
-    font-size: 34rpx;
-    font-weight: 700;
-    letter-spacing: 4rpx;
-    border-radius: 18rpx;
-    box-shadow: 0 14rpx 30rpx rgba(59, 124, 255, 0.32);
 
-    &--hover {
-      transform: translateY(2rpx);
-      opacity: 0.94;
-      box-shadow: 0 8rpx 18rpx rgba(59, 124, 255, 0.28);
-    }
-  }
   // 开发验证码提示
   .dev-tip {
     margin-top: 32rpx;

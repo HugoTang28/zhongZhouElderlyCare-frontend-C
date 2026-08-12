@@ -64,66 +64,8 @@
   padding: 48rpx 40rpx 44rpx;
   box-shadow: 0 20rpx 60rpx rgba(31, 52, 110, 0.12);
 }
-.form-card .field.data-v-cdfe2409 {
-  display: flex;
-  align-items: center;
-  background: #f4f6fb;
-  border: 2rpx solid transparent;
-  border-radius: 18rpx;
-  padding: 0 24rpx;
-  height: 96rpx;
-  margin-bottom: 28rpx;
-  transition: border-color, background-color 0.2s;
-}
-.form-card .field.focus.data-v-cdfe2409 {
-  background: #fff;
-  border-color: #3b7cff;
-  box-shadow: 0 0 0 6rpx rgba(59, 124, 255, 0.1);
-}
-.form-card .field-icon.data-v-cdfe2409 {
-  font-size: 34rpx;
-  margin-right: 16rpx;
-}
-.form-card .field-input.data-v-cdfe2409 {
-  flex: 1;
-  height: 96rpx;
-  font-size: 30rpx;
-  color: #1a1a1a;
-}
-.form-card .field.code.data-v-cdfe2409 {
-  padding-right: 12rpx;
-}
-.form-card .field .code-btn.data-v-cdfe2409 {
-  margin: 0;
-  padding: 0 24rpx;
-  height: 72rpx;
-  line-height: 72rpx;
-  background: #eaf1ff;
-  color: #3b7cff;
-  font-size: 26rpx;
-  font-weight: 600;
-  border-radius: 14rpx;
-}
-.form-card .field .code-btn[disabled].data-v-cdfe2409 {
-  color: #aab6cc;
-  background: #f0f3f8;
-}
-.form-card .login-btn.data-v-cdfe2409 {
-  margin-top: 16rpx;
-  height: 96rpx;
-  line-height: 96rpx;
-  background: linear-gradient(135deg, #3b7cff, #5e9bff);
-  color: #fff;
-  font-size: 34rpx;
-  font-weight: 700;
-  letter-spacing: 4rpx;
-  border-radius: 18rpx;
-  box-shadow: 0 14rpx 30rpx rgba(59, 124, 255, 0.32);
-}
-.form-card .login-btn--hover.data-v-cdfe2409 {
-  transform: translateY(2rpx);
-  opacity: 0.94;
-  box-shadow: 0 8rpx 18rpx rgba(59, 124, 255, 0.28);
+.form-card.data-v-cdfe2409 .up-form-item__body {
+  padding: 0 0 28rpx 0 !important;
 }
 .form-card .dev-tip.data-v-cdfe2409 {
   margin-top: 32rpx;

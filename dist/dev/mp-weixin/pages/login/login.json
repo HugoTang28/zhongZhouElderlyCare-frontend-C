@@ -3,6 +3,10 @@
   "navigationBarBackgroundColor": "#3b7cff",
   "navigationBarTextStyle": "white",
   "usingComponents": {
-    "up-icon": "../../node-modules/uview-plus/components/u-icon/u-icon"
+    "up-icon": "../../node-modules/uview-plus/components/u-icon/u-icon",
+    "up-input": "../../node-modules/uview-plus/components/u-input/u-input",
+    "up-form-item": "../../node-modules/uview-plus/components/u-form-item/u-form-item",
+    "up-button": "../../node-modules/uview-plus/components/u-button/u-button",
+    "up-form": "../../node-modules/uview-plus/components/u-form/u-form"
   }
 }

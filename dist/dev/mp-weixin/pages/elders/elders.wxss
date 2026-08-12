@@ -97,31 +97,9 @@
   word-break: break-all;
 }
 .state-box.data-v-18f9d8a6 {
-  text-align: center;
+  display: flex;
+  justify-content: center;
   padding: 120rpx 40rpx;
-}
-.spinner.data-v-18f9d8a6 {
-  width: 60rpx;
-  height: 60rpx;
-  border: 4rpx solid #e6e6e6;
-  border-top-color: #3b7cff;
-  border-radius: 50%;
-  margin: 0 auto 20rpx;
-  animation: spin-18f9d8a6 1s linear infinite;
-}
-@keyframes spin-18f9d8a6 {
-to {
-    transform: rotate(360deg);
-}
-}
-.empty-icon.data-v-18f9d8a6 {
-  font-size: 80rpx;
-  margin-bottom: 20rpx;
-}
-.state-text.data-v-18f9d8a6 {
-  display: block;
-  font-size: 30rpx;
-  color: #666;
 }
 .state-tip.data-v-18f9d8a6 {
   display: block;

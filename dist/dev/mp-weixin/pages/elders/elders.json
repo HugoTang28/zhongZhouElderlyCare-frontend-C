@@ -2,6 +2,9 @@
   "navigationBarTitleText": "我的家人",
   "enablePullDownRefresh": true,
   "usingComponents": {
-    "zz-status-tag": "../../components/zz-status-tag/zz-status-tag"
+    "up-loading-icon": "../../node-modules/uview-plus/components/u-loading-icon/u-loading-icon",
+    "up-empty": "../../node-modules/uview-plus/components/u-empty/u-empty",
+    "up-tag": "../../node-modules/uview-plus/components/u-tag/u-tag",
+    "up-icon": "../../node-modules/uview-plus/components/u-icon/u-icon"
   }
 }

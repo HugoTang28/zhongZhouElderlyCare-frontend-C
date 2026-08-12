@@ -1,39 +1,33 @@
 <template>
   <view class="page">
-    <!-- 顶部 header -->
-    <!-- <view class="header">
-      <view class="header-title">我的家人</view>
-      <view class="header-sub">随时关注长者在院情况</view>
-    </view> -->
-
     <view class="content">
       <!-- 加载中 -->
       <view v-if="loading" class="state-box">
-        <view class="spinner"></view>
-        <text class="state-text">正在加载家人信息...</text>
+        <up-loading-icon text="正在加载家人信息..." textSize="15" color="#3b7cff" textColor="#666"></up-loading-icon>
       </view>
 
       <!-- 空状态 -->
       <view v-else-if="!list.length" class="state-box">
-        <view class="empty-icon">👨‍⚕️</view>
-        <text class="state-text">暂无关联老人</text>
-        <text class="state-tip">请联系养老院工作人员绑定家属手机号</text>
+        <up-empty mode="list" text="暂无关联老人" marginTop="40">
+          <template #bottom>
+            <text class="state-tip">请联系养老院工作人员绑定家属手机号</text>
+          </template>
+        </up-empty>
       </view>
 
       <!-- 老人卡片列表 -->
       <view v-else>
-        <!-- <view class="summary">共 {{ list.length }} 位在院亲人</view> -->
         <view class="elder-card" v-for="(item, index) in list" :key="index">
           <view class="card-head">
             <view class="avatar">{{ item.elderName ? item.elderName.charAt(0) : '长' }}</view>
             <view class="head-info">
               <view class="name-line">
                 <text class="name">{{ item.elderName }}</text>
-                <zz-status-tag :text="item.statusText" :type="item.statusType" />
+                <up-tag :text="item.statusText" :bgColor="item.statusBg" :color="item.statusColor" :borderColor="item.statusBg" size="mini"></up-tag>
               </view>
               <view class="meta">{{ item.sexText }} · {{ item.age }}岁</view>
             </view>
-            <text class="card-arrow">›</text>
+            <up-icon name="arrow-right" color="#c5ccd6" size="22"></up-icon>
           </view>
 
           <view class="info-grid">
@@ -65,7 +59,7 @@
 
           <view class="card-foot">
             <text>查看照护与账单详情</text>
-            <text class="card-arrow">›</text>
+            <up-icon name="arrow-right" color="#9aa0a6" size="18"></up-icon>
           </view>
         </view>
       </view>
@@ -83,7 +77,8 @@ const list = ref([])
 const loading = ref(false)
 
 const statusTextMap = { 0: '在住', 1: '已退住', 2: '待入住' }
-const statusTypeMap = { 0: 'success', 1: 'info', 2: 'warning' }
+const statusBgMap = { 0: '#e6f9f0', 1: '#f2f2f2', 2: '#fff5e6' }
+const statusColorMap = { 0: '#07c160', 1: '#999', 2: '#ff9900' }
 const sexTextMap = { 1: '男', 2: '女' }
 
 function load() {
@@ -92,7 +87,8 @@ function load() {
     list.value = (data || []).map(it => ({
       ...it,
       statusText: statusTextMap[it.status] || '未知',
-      statusType: statusTypeMap[it.status] || 'warning',
+      statusBg: statusBgMap[it.status] || '#f5f7fa',
+      statusColor: statusColorMap[it.status] || '#999',
       sexText: sexTextMap[it.sex] || '未知',
       idCardMasked: maskIdCard(it.idCard),
       bedText: it.bedId ? ('#' + it.bedId) : '暂未分配',
@@ -228,35 +224,9 @@ onPullDownRefresh(() => { load().finally(() => uni.stopPullDownRefresh()) })
 }
 
 .state-box {
-  text-align: center;
+  display: flex;
+  justify-content: center;
   padding: 120rpx 40rpx;
-}
-
-.spinner {
-  width: 60rpx;
-  height: 60rpx;
-  border: 4rpx solid #e6e6e6;
-  border-top-color: #3b7cff;
-  border-radius: 50%;
-  margin: 0 auto 20rpx;
-  animation: spin 1s linear infinite;
-}
-
-@keyframes spin {
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-.empty-icon {
-  font-size: 80rpx;
-  margin-bottom: 20rpx;
-}
-
-.state-text {
-  display: block;
-  font-size: 30rpx;
-  color: #666;
 }
 
 .state-tip {

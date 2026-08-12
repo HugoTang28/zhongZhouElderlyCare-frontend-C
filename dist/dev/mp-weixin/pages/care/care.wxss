@@ -159,33 +159,8 @@
   border-radius: 20rpx;
   margin-top: 12rpx;
 }
-.empty-mini.data-v-9bfbe887 {
-  text-align: center;
-  color: #999;
-  padding: 60rpx 0;
-  font-size: 28rpx;
-  background: #fff;
-  border-radius: 24rpx;
-}
 .state-box.data-v-9bfbe887 {
-  text-align: center;
+  display: flex;
+  justify-content: center;
   padding: 120rpx 40rpx;
-}
-.spinner.data-v-9bfbe887 {
-  width: 60rpx;
-  height: 60rpx;
-  border: 4rpx solid #e6e6e6;
-  border-top-color: #3b7cff;
-  border-radius: 50%;
-  margin: 0 auto 20rpx;
-  animation: spin-9bfbe887 1s linear infinite;
-}
-@keyframes spin-9bfbe887 {
-to {
-    transform: rotate(360deg);
-}
-}
-.state-text.data-v-9bfbe887 {
-  font-size: 30rpx;
-  color: #666;
 }

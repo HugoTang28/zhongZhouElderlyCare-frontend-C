@@ -139,33 +139,8 @@
   margin-top: 6rpx;
   text-align: right;
 }
-.empty-mini.data-v-3b793916 {
-  text-align: center;
-  color: #999;
-  padding: 60rpx 0;
-  font-size: 28rpx;
-  background: #fff;
-  border-radius: 24rpx;
-}
 .state-box.data-v-3b793916 {
-  text-align: center;
+  display: flex;
+  justify-content: center;
   padding: 120rpx 40rpx;
-}
-.spinner.data-v-3b793916 {
-  width: 60rpx;
-  height: 60rpx;
-  border: 4rpx solid #e6e6e6;
-  border-top-color: #3b7cff;
-  border-radius: 50%;
-  margin: 0 auto 20rpx;
-  animation: spin-3b793916 1s linear infinite;
-}
-@keyframes spin-3b793916 {
-to {
-    transform: rotate(360deg);
-}
-}
-.state-text.data-v-3b793916 {
-  font-size: 30rpx;
-  color: #666;
 }

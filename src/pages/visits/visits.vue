@@ -2,8 +2,7 @@
   <view class="page">
     <view class="content">
       <view v-if="loading" class="state-box">
-        <view class="spinner"></view>
-        <text class="state-text">正在加载探视记录...</text>
+        <up-loading-icon text="正在加载探视记录..." textSize="15" color="#3b7cff" textColor="#666"></up-loading-icon>
       </view>
 
       <view v-else>
@@ -13,11 +12,11 @@
             <text class="dot blue"></text>
             <text>探视预约</text>
           </view>
-          <view v-if="!appointments.length" class="empty-mini">暂无预约记录</view>
+          <up-empty v-if="!appointments.length" mode="list" text="暂无预约记录" marginTop="40"></up-empty>
           <view v-else class="card" v-for="(item, index) in appointments" :key="'a'+index">
             <view class="card-top">
               <view class="card-title">{{ item.visitorName }}</view>
-              <view class="tag" :class="item.apptCls">{{ item.apptText }}</view>
+              <up-tag :text="item.apptText" :bgColor="item.apptBg" :color="item.apptColor" :borderColor="item.apptBg" size="mini"></up-tag>
             </view>
             <view class="card-body">
               <view class="row"><text class="label">探望老人</text><text class="value">{{ item.elderName }}</text></view>
@@ -34,11 +33,11 @@
             <text class="dot green"></text>
             <text>来访登记</text>
           </view>
-          <view v-if="!registrations.length" class="empty-mini">暂无登记记录</view>
+          <up-empty v-if="!registrations.length" mode="list" text="暂无登记记录" marginTop="40"></up-empty>
           <view v-else class="card" v-for="(item, index) in registrations" :key="'r'+index">
             <view class="card-top">
               <view class="card-title">{{ item.visitorName }}</view>
-              <view class="tag grey">{{ item.relation || '家属' }}</view>
+              <up-tag :text="item.relation || '家属'" bgColor="#f2f2f2" color="#666" borderColor="#f2f2f2" size="mini"></up-tag>
             </view>
             <view class="card-body">
               <view class="row"><text class="label">探望老人</text><text class="value">{{ item.elderName }}</text></view>
@@ -64,7 +63,8 @@ const registrations = ref([])
 const loading = ref(false)
 
 const apptTextMap = { 0: '待审核', 1: '已通过', 2: '已拒绝', 3: '已取消' }
-const apptClsMap = { 0: 'wait', 1: 'pass', 2: 'reject', 3: 'cancel' }
+const apptBgMap = { 0: '#fff5e6', 1: '#e6f9f0', 2: '#ffebeb', 3: '#f2f2f2' }
+const apptColorMap = { 0: '#ff9900', 1: '#07c160', 2: '#ff4d4f', 3: '#999' }
 
 function load() {
   loading.value = true
@@ -72,7 +72,8 @@ function load() {
     appointments.value = ((data && data.appointments) || []).map(it => ({
       ...it,
       apptText: apptTextMap[it.status] || '未知',
-      apptCls: apptClsMap[it.status] || 'grey',
+      apptBg: apptBgMap[it.status] || '#f5f7fa',
+      apptColor: apptColorMap[it.status] || '#999',
       visitTimeText: fmtTime(it.visitTime)
     }))
     registrations.value = ((data && data.registrations) || []).map(it => ({
@@ -199,38 +200,9 @@ onPullDownRefresh(() => { load().finally(() => uni.stopPullDownRefresh()) })
   }
 }
 
-.empty-mini {
-  text-align: center;
-  color: #999;
-  padding: 60rpx 0;
-  font-size: 28rpx;
-  background: #fff;
-  border-radius: 24rpx;
-}
-
 .state-box {
-  text-align: center;
+  display: flex;
+  justify-content: center;
   padding: 120rpx 40rpx;
-}
-
-.spinner {
-  width: 60rpx;
-  height: 60rpx;
-  border: 4rpx solid #e6e6e6;
-  border-top-color: #3b7cff;
-  border-radius: 50%;
-  margin: 0 auto 20rpx;
-  animation: spin 1s linear infinite;
-}
-
-@keyframes spin {
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-.state-text {
-  font-size: 30rpx;
-  color: #666;
 }
 </style>
