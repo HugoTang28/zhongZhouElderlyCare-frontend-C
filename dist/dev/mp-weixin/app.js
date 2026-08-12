@@ -23,6 +23,7 @@ const _sfc_main = {
 const zzPlaceholder = () => "./components/zz-placeholder/zz-placeholder.js";
 function createApp() {
   const app = common_vendor.createSSRApp(_sfc_main);
+  app.use(common_vendor.uviewPlus);
   app.component("zz-placeholder", zzPlaceholder);
   return { app };
 }

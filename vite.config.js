@@ -8,8 +8,8 @@ export default defineConfig({
       '/api': {
         target: 'http://192.168.11.7:9996',
         changeOrigin: true,
-        rewrite: (path) => path.replace(/^\/api/, '')
-      }
-    }
-  }
+        rewrite: (path) => path.replace(/^\/api/, ''),
+      },
+    },
+  },
 })

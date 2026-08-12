@@ -8,23 +8,21 @@
   display: flex;
   flex-direction: column;
 }
-
-/* 装饰光斑 */
-.deco.data-v-cdfe2409 {
+.login .deco.data-v-cdfe2409 {
   position: absolute;
   border-radius: 50%;
   filter: blur(6rpx);
   opacity: 0.5;
   z-index: 0;
 }
-.deco-1.data-v-cdfe2409 {
+.login .deco-1.data-v-cdfe2409 {
   width: 360rpx;
   height: 360rpx;
   top: -120rpx;
   right: -100rpx;
   background: radial-gradient(circle, #5e9bff 0%, rgba(94, 155, 255, 0) 70%);
 }
-.deco-2.data-v-cdfe2409 {
+.login .deco-2.data-v-cdfe2409 {
   width: 300rpx;
   height: 300rpx;
   top: 220rpx;
@@ -58,8 +56,6 @@
   color: #8a9099;
   margin-top: 16rpx;
 }
-
-/* 登录卡片 */
 .form-card.data-v-cdfe2409 {
   position: relative;
   z-index: 1;
@@ -68,7 +64,7 @@
   padding: 48rpx 40rpx 44rpx;
   box-shadow: 0 20rpx 60rpx rgba(31, 52, 110, 0.12);
 }
-.field.data-v-cdfe2409 {
+.form-card .field.data-v-cdfe2409 {
   display: flex;
   align-items: center;
   background: #f4f6fb;
@@ -79,25 +75,25 @@
   margin-bottom: 28rpx;
   transition: border-color, background-color 0.2s;
 }
-.field.focus.data-v-cdfe2409 {
+.form-card .field.focus.data-v-cdfe2409 {
   background: #fff;
   border-color: #3b7cff;
   box-shadow: 0 0 0 6rpx rgba(59, 124, 255, 0.1);
 }
-.field-icon.data-v-cdfe2409 {
+.form-card .field-icon.data-v-cdfe2409 {
   font-size: 34rpx;
   margin-right: 16rpx;
 }
-.field-input.data-v-cdfe2409 {
+.form-card .field-input.data-v-cdfe2409 {
   flex: 1;
   height: 96rpx;
   font-size: 30rpx;
   color: #1a1a1a;
 }
-.field.code.data-v-cdfe2409 {
+.form-card .field.code.data-v-cdfe2409 {
   padding-right: 12rpx;
 }
-.code-btn.data-v-cdfe2409 {
+.form-card .field .code-btn.data-v-cdfe2409 {
   margin: 0;
   padding: 0 24rpx;
   height: 72rpx;
@@ -108,11 +104,11 @@
   font-weight: 600;
   border-radius: 14rpx;
 }
-.code-btn[disabled].data-v-cdfe2409 {
+.form-card .field .code-btn[disabled].data-v-cdfe2409 {
   color: #aab6cc;
   background: #f0f3f8;
 }
-.login-btn.data-v-cdfe2409 {
+.form-card .login-btn.data-v-cdfe2409 {
   margin-top: 16rpx;
   height: 96rpx;
   line-height: 96rpx;
@@ -124,37 +120,35 @@
   border-radius: 18rpx;
   box-shadow: 0 14rpx 30rpx rgba(59, 124, 255, 0.32);
 }
-.login-btn--hover.data-v-cdfe2409 {
+.form-card .login-btn--hover.data-v-cdfe2409 {
   transform: translateY(2rpx);
   opacity: 0.94;
   box-shadow: 0 8rpx 18rpx rgba(59, 124, 255, 0.28);
 }
-
-/* 开发验证码提示 */
-.dev-tip.data-v-cdfe2409 {
+.form-card .dev-tip.data-v-cdfe2409 {
   margin-top: 32rpx;
   padding: 24rpx;
   background: #fff8ec;
   border: 2rpx dashed #ffd591;
   border-radius: 16rpx;
 }
-.dev-tip-row.data-v-cdfe2409 {
+.form-card .dev-tip-row.data-v-cdfe2409 {
   display: flex;
   align-items: center;
   justify-content: center;
 }
-.dev-tip-label.data-v-cdfe2409 {
+.form-card .dev-tip-label.data-v-cdfe2409 {
   font-size: 24rpx;
   color: #b2761a;
   margin-right: 16rpx;
 }
-.dev-tip-code.data-v-cdfe2409 {
+.form-card .dev-tip-code.data-v-cdfe2409 {
   font-size: 40rpx;
   font-weight: 800;
   color: #ff9900;
   letter-spacing: 6rpx;
 }
-.dev-tip-note.data-v-cdfe2409 {
+.form-card .dev-tip-note.data-v-cdfe2409 {
   display: block;
   text-align: center;
   font-size: 22rpx;

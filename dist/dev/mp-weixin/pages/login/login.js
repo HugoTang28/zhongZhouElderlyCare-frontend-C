@@ -2,6 +2,14 @@
 const common_vendor = require("../../common/vendor.js");
 const common_assets = require("../../common/assets.js");
 const api_family = require("../../api/family.js");
+if (!Array) {
+  const _easycom_up_icon2 = common_vendor.resolveComponent("up-icon");
+  _easycom_up_icon2();
+}
+const _easycom_up_icon = () => "../../node-modules/uview-plus/components/u-icon/u-icon.js";
+if (!Math) {
+  _easycom_up_icon();
+}
 const _sfc_main = {
   __name: "login",
   setup(__props) {
@@ -60,23 +68,27 @@ const _sfc_main = {
     return (_ctx, _cache) => {
       return common_vendor.e({
         a: common_assets._imports_0,
-        b: common_vendor.o(($event) => phoneFocus.value = true, "3d"),
-        c: common_vendor.o(($event) => phoneFocus.value = false, "92"),
-        d: phone.value,
-        e: common_vendor.o(($event) => phone.value = $event.detail.value, "40"),
-        f: phoneFocus.value ? 1 : "",
-        g: common_vendor.o(($event) => codeFocus.value = true, "ea"),
-        h: common_vendor.o(($event) => codeFocus.value = false, "64"),
-        i: code.value,
-        j: common_vendor.o(($event) => code.value = $event.detail.value, "b8"),
-        k: common_vendor.t(codeText.value),
-        l: common_vendor.o(getCode, "42"),
-        m: counting.value,
-        n: codeFocus.value ? 1 : "",
-        o: common_vendor.o(doLogin, "bf"),
-        p: devCode.value
+        b: common_vendor.p({
+          name: "phone",
+          size: "20"
+        }),
+        c: common_vendor.o(($event) => phoneFocus.value = true, "3c"),
+        d: common_vendor.o(($event) => phoneFocus.value = false, "7c"),
+        e: phone.value,
+        f: common_vendor.o(($event) => phone.value = $event.detail.value, "d7"),
+        g: phoneFocus.value ? 1 : "",
+        h: common_vendor.o(($event) => codeFocus.value = true, "d3"),
+        i: common_vendor.o(($event) => codeFocus.value = false, "a7"),
+        j: code.value,
+        k: common_vendor.o(($event) => code.value = $event.detail.value, "6a"),
+        l: common_vendor.t(codeText.value),
+        m: common_vendor.o(getCode, "d0"),
+        n: counting.value,
+        o: codeFocus.value ? 1 : "",
+        p: common_vendor.o(doLogin, "93"),
+        q: devCode.value
       }, devCode.value ? {
-        q: common_vendor.t(devCode.value)
+        r: common_vendor.t(devCode.value)
       } : {});
     };
   }
