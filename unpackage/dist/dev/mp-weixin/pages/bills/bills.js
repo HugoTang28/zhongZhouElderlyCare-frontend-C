@@ -97,44 +97,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "recyclableRender", function() { return recyclableRender; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "components", function() { return components; });
-var components
-var render = function () {
-  var _vm = this
-  var _h = _vm.$createElement
-  var _c = _vm._self._c || _h
-  var l0 = _vm.__map(_vm.bills, function (b, i) {
-    var $orig = _vm.__get_orig(b)
-    var m0 = _vm.billStatus(b.status)
-    return {
-      $orig: $orig,
-      m0: m0,
-    }
-  })
-  var g0 = _vm.bills.length
-  var l1 = _vm.__map(_vm.prestores, function (p, i) {
-    var $orig = _vm.__get_orig(p)
-    var m1 = _vm.format(p.createTime)
-    return {
-      $orig: $orig,
-      m1: m1,
-    }
-  })
-  var g1 = _vm.prestores.length
-  _vm.$mp.data = Object.assign(
-    {},
-    {
-      $root: {
-        l0: l0,
-        g0: g0,
-        l1: l1,
-        g1: g1,
-      },
-    }
-  )
-}
-var recyclableRender = false
+var render = function () {}
 var staticRenderFns = []
-render._withStripped = true
+var recyclableRender
+var components
 
 
 
@@ -166,14 +132,43 @@ __webpack_require__.r(__webpack_exports__);
 "use strict";
 /* WEBPACK VAR INJECTION */(function(uni) {
 
-var _interopRequireDefault = __webpack_require__(/*! @babel/runtime/helpers/interopRequireDefault */ 2);
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.default = void 0;
-var _regenerator = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/regenerator */ 39));
-var _asyncToGenerator2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/asyncToGenerator */ 41));
 var _family = __webpack_require__(/*! @/api/family.js */ 42);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -209,53 +204,59 @@ var _family = __webpack_require__(/*! @/api/family.js */ 42);
 var _default = {
   data: function data() {
     return {
-      balance: '0.00',
       bills: [],
-      prestores: []
+      prestore: [],
+      balance: 0,
+      loading: false
     };
   },
+  onLoad: function onLoad() {
+    this.loadBills();
+  },
   onShow: function onShow() {
-    this.load();
+    this.loadBills();
+  },
+  onPullDownRefresh: function onPullDownRefresh() {
+    this.loadBills().finally(function () {
+      return uni.stopPullDownRefresh();
+    });
   },
   methods: {
-    load: function load() {
+    loadBills: function loadBills() {
       var _this = this;
-      return (0, _asyncToGenerator2.default)( /*#__PURE__*/_regenerator.default.mark(function _callee() {
-        var token, res;
-        return _regenerator.default.wrap(function _callee$(_context) {
-          while (1) {
-            switch (_context.prev = _context.next) {
-              case 0:
-                token = uni.getStorageSync('family_token');
-                if (token) {
-                  _context.next = 4;
-                  break;
-                }
-                uni.reLaunch({
-                  url: '/pages/login/login'
-                });
-                return _context.abrupt("return");
-              case 4:
-                _context.next = 6;
-                return (0, _family.getBills)();
-              case 6:
-                res = _context.sent;
-                _this.balance = (res.balance || 0).toFixed(2);
-                _this.bills = res.bills || [];
-                _this.prestores = res.prestores || [];
-              case 10:
-              case "end":
-                return _context.stop();
-            }
-          }
-        }, _callee);
-      }))();
+      this.loading = true;
+      return (0, _family.getBills)().then(function (data) {
+        console.log('账单数据', data);
+        _this.bills = data && data.bills || [];
+        _this.prestore = data && data.prestore || [];
+        _this.balance = data && data.balance || 0;
+      }).catch(function (err) {
+        console.error('加载账单失败', err);
+      }).finally(function () {
+        _this.loading = false;
+      });
     },
-    billStatus: function billStatus(s) {
-      return s === 0 ? '未缴' : s === 1 ? '已缴' : '已退费';
+    billStatusText: function billStatusText(status) {
+      var map = {
+        0: '未缴',
+        1: '已缴',
+        2: '退费'
+      };
+      return map[status] || status;
     },
-    format: function format(t) {
-      return t ? t.replace('T', ' ') : '—';
+    billStatusClass: function billStatusClass(status) {
+      return status === 0 ? 'unpaid' : status === 1 ? 'paid' : 'refund';
+    },
+    billAmountClass: function billAmountClass(status) {
+      return status === 0 ? 'unpaid' : status === 1 ? 'paid' : 'refund';
+    },
+    prestoreTypeText: function prestoreTypeText(type) {
+      var map = {
+        0: '预存充值',
+        1: '费用扣款',
+        2: '退款'
+      };
+      return map[type] || '其它';
     }
   }
 };

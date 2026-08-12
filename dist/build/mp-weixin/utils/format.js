@@ -1,0 +1,1 @@
+"use strict";exports.fmtTime=function(e){return e?String(e).replace("T"," ").replace(/\.\d+$/,"").slice(0,16):"-"},exports.maskIdCard=function(e){return!e||e.length<10?e||"-":e.slice(0,6)+"********"+e.slice(-4)};

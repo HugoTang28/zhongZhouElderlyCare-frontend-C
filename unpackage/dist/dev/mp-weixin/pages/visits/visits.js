@@ -97,48 +97,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "recyclableRender", function() { return recyclableRender; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "components", function() { return components; });
-var components
-var render = function () {
-  var _vm = this
-  var _h = _vm.$createElement
-  var _c = _vm._self._c || _h
-  var l0 = _vm.__map(_vm.appointments, function (a, i) {
-    var $orig = _vm.__get_orig(a)
-    var m0 = _vm.apptStatus(a.status)
-    var m1 = _vm.format(a.visitTime)
-    return {
-      $orig: $orig,
-      m0: m0,
-      m1: m1,
-    }
-  })
-  var g0 = _vm.appointments.length
-  var l1 = _vm.__map(_vm.registrations, function (r, i) {
-    var $orig = _vm.__get_orig(r)
-    var m2 = _vm.format(r.arriveTime)
-    var m3 = _vm.format(r.leaveTime)
-    return {
-      $orig: $orig,
-      m2: m2,
-      m3: m3,
-    }
-  })
-  var g1 = _vm.registrations.length
-  _vm.$mp.data = Object.assign(
-    {},
-    {
-      $root: {
-        l0: l0,
-        g0: g0,
-        l1: l1,
-        g1: g1,
-      },
-    }
-  )
-}
-var recyclableRender = false
+var render = function () {}
 var staticRenderFns = []
-render._withStripped = true
+var recyclableRender
+var components
 
 
 
@@ -170,14 +132,44 @@ __webpack_require__.r(__webpack_exports__);
 "use strict";
 /* WEBPACK VAR INJECTION */(function(uni) {
 
-var _interopRequireDefault = __webpack_require__(/*! @babel/runtime/helpers/interopRequireDefault */ 2);
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.default = void 0;
-var _regenerator = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/regenerator */ 39));
-var _asyncToGenerator2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/asyncToGenerator */ 41));
 var _family = __webpack_require__(/*! @/api/family.js */ 42);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -209,50 +201,55 @@ var _default = {
   data: function data() {
     return {
       appointments: [],
-      registrations: []
+      registrations: [],
+      loading: false
     };
   },
+  onLoad: function onLoad() {
+    this.loadVisits();
+  },
   onShow: function onShow() {
-    this.load();
+    this.loadVisits();
+  },
+  onPullDownRefresh: function onPullDownRefresh() {
+    this.loadVisits().finally(function () {
+      return uni.stopPullDownRefresh();
+    });
   },
   methods: {
-    load: function load() {
+    loadVisits: function loadVisits() {
       var _this = this;
-      return (0, _asyncToGenerator2.default)( /*#__PURE__*/_regenerator.default.mark(function _callee() {
-        var token, res;
-        return _regenerator.default.wrap(function _callee$(_context) {
-          while (1) {
-            switch (_context.prev = _context.next) {
-              case 0:
-                token = uni.getStorageSync('family_token');
-                if (token) {
-                  _context.next = 4;
-                  break;
-                }
-                uni.reLaunch({
-                  url: '/pages/login/login'
-                });
-                return _context.abrupt("return");
-              case 4:
-                _context.next = 6;
-                return (0, _family.getVisits)();
-              case 6:
-                res = _context.sent;
-                _this.appointments = res.appointments || [];
-                _this.registrations = res.registrations || [];
-              case 9:
-              case "end":
-                return _context.stop();
-            }
-          }
-        }, _callee);
-      }))();
+      this.loading = true;
+      return (0, _family.getVisits)().then(function (data) {
+        console.log('探视数据', data);
+        _this.appointments = data && data.appointments || [];
+        _this.registrations = data && data.registrations || [];
+      }).catch(function (err) {
+        console.error('加载探视记录失败', err);
+      }).finally(function () {
+        _this.loading = false;
+      });
     },
-    apptStatus: function apptStatus(s) {
-      return s === 0 ? '待接待' : s === 1 ? '已接待' : '已取消';
+    apptText: function apptText(status) {
+      var map = {
+        0: '待审核',
+        1: '已通过',
+        2: '已拒绝',
+        3: '已取消'
+      };
+      return map[status] || status;
     },
-    format: function format(t) {
-      return t ? t.replace('T', ' ') : '—';
+    apptClass: function apptClass(status) {
+      return {
+        0: 'wait',
+        1: 'pass',
+        2: 'reject',
+        3: 'cancel'
+      }[status] || 'grey';
+    },
+    maskIdCard: function maskIdCard(idCard) {
+      if (!idCard || idCard.length < 10) return idCard || '-';
+      return idCard.substring(0, 6) + '********' + idCard.substring(idCard.length - 4);
     }
   }
 };

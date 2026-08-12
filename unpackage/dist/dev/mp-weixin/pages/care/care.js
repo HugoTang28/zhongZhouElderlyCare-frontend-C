@@ -97,48 +97,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "recyclableRender", function() { return recyclableRender; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "components", function() { return components; });
-var components
-var render = function () {
-  var _vm = this
-  var _h = _vm.$createElement
-  var _c = _vm._self._c || _h
-  var l0 = _vm.__map(_vm.plans, function (p, i) {
-    var $orig = _vm.__get_orig(p)
-    var m0 = _vm.format(p.startDate)
-    var m1 = _vm.format(p.endDate)
-    return {
-      $orig: $orig,
-      m0: m0,
-      m1: m1,
-    }
-  })
-  var g0 = _vm.plans.length
-  var l1 = _vm.__map(_vm.tasks, function (t, i) {
-    var $orig = _vm.__get_orig(t)
-    var m2 = _vm.taskStatus(t.status)
-    var m3 = _vm.format(t.planTime)
-    return {
-      $orig: $orig,
-      m2: m2,
-      m3: m3,
-    }
-  })
-  var g1 = _vm.tasks.length
-  _vm.$mp.data = Object.assign(
-    {},
-    {
-      $root: {
-        l0: l0,
-        g0: g0,
-        l1: l1,
-        g1: g1,
-      },
-    }
-  )
-}
-var recyclableRender = false
+var render = function () {}
 var staticRenderFns = []
-render._withStripped = true
+var recyclableRender
+var components
 
 
 
@@ -170,14 +132,41 @@ __webpack_require__.r(__webpack_exports__);
 "use strict";
 /* WEBPACK VAR INJECTION */(function(uni) {
 
-var _interopRequireDefault = __webpack_require__(/*! @babel/runtime/helpers/interopRequireDefault */ 2);
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.default = void 0;
-var _regenerator = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/regenerator */ 39));
-var _asyncToGenerator2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/asyncToGenerator */ 41));
 var _family = __webpack_require__(/*! @/api/family.js */ 42);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -211,50 +200,62 @@ var _default = {
   data: function data() {
     return {
       plans: [],
-      tasks: []
+      tasks: [],
+      loading: false
     };
   },
+  onLoad: function onLoad() {
+    this.loadCare();
+  },
   onShow: function onShow() {
-    this.load();
+    this.loadCare();
+  },
+  onPullDownRefresh: function onPullDownRefresh() {
+    this.loadCare().finally(function () {
+      return uni.stopPullDownRefresh();
+    });
   },
   methods: {
-    load: function load() {
+    loadCare: function loadCare() {
       var _this = this;
-      return (0, _asyncToGenerator2.default)( /*#__PURE__*/_regenerator.default.mark(function _callee() {
-        var token, res;
-        return _regenerator.default.wrap(function _callee$(_context) {
-          while (1) {
-            switch (_context.prev = _context.next) {
-              case 0:
-                token = uni.getStorageSync('family_token');
-                if (token) {
-                  _context.next = 4;
-                  break;
-                }
-                uni.reLaunch({
-                  url: '/pages/login/login'
-                });
-                return _context.abrupt("return");
-              case 4:
-                _context.next = 6;
-                return (0, _family.getCare)();
-              case 6:
-                res = _context.sent;
-                _this.plans = res.plans || [];
-                _this.tasks = res.tasks || [];
-              case 9:
-              case "end":
-                return _context.stop();
-            }
-          }
-        }, _callee);
-      }))();
+      this.loading = true;
+      return (0, _family.getCare)().then(function (data) {
+        console.log('护理数据', data);
+        _this.plans = data && data.plans || [];
+        _this.tasks = data && data.tasks || [];
+      }).catch(function (err) {
+        console.error('加载护理动态失败', err);
+      }).finally(function () {
+        _this.loading = false;
+      });
     },
-    taskStatus: function taskStatus(s) {
-      return s === 0 ? '待执行' : s === 1 ? '执行中' : '已完成';
+    planText: function planText(status) {
+      var map = {
+        0: '执行中',
+        1: '已完成',
+        2: '已暂停'
+      };
+      return map[status] || status;
     },
-    format: function format(t) {
-      return t ? t.replace('T', ' ') : '—';
+    planClass: function planClass(status) {
+      return status === 0 ? 'doing' : status === 1 ? 'done' : 'pause';
+    },
+    taskText: function taskText(status) {
+      var map = {
+        0: '待执行',
+        1: '执行中',
+        2: '已完成',
+        3: '已取消'
+      };
+      return map[status] || status;
+    },
+    taskClass: function taskClass(status) {
+      return {
+        0: 'wait',
+        1: 'doing',
+        2: 'done',
+        3: 'cancel'
+      }[status] || 'grey';
     }
   }
 };

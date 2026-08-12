@@ -10173,8 +10173,10 @@ function request(url) {
   var method = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 'GET';
   var data = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : {};
   return new Promise(function (resolve, reject) {
+    var fullUrl = BASE_URL + url;
+    console.log('[request]', method, fullUrl, data);
     uni.request({
-      url: BASE_URL + url,
+      url: fullUrl,
       method: method,
       data: data,
       header: {
@@ -10182,6 +10184,7 @@ function request(url) {
         'Authorization': 'Bearer ' + getToken()
       },
       success: function success(res) {
+        console.log('[response]', url, res.statusCode, res.data);
         var body = res.data;
         if (res.statusCode === 200 && body && body.code === 200) {
           resolve(body.data);
@@ -10192,14 +10195,16 @@ function request(url) {
           });
           reject(body);
         } else {
+          var msg = body && body.msg || '请求失败';
           uni.showToast({
-            title: body && body.msg || '请求失败',
+            title: msg,
             icon: 'none'
           });
           reject(body);
         }
       },
       fail: function fail(err) {
+        console.error('[request fail]', url, err);
         uni.showToast({
           title: '网络异常，请稍后重试',
           icon: 'none'

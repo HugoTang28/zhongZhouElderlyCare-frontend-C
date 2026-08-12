@@ -1,0 +1,46 @@
+{
+  "pages": [
+    "pages/login/login",
+    "pages/elders/elders",
+    "pages/visits/visits",
+    "pages/bills/bills",
+    "pages/care/care",
+    "pages/messages/messages"
+  ],
+  "window": {
+    "navigationBarTitleText": "中州养老家属端",
+    "navigationBarBackgroundColor": "#3b7cff",
+    "navigationBarTextStyle": "white",
+    "backgroundColor": "#f5f6fa"
+  },
+  "tabBar": {
+    "color": "#7A7E83",
+    "selectedColor": "#3b7cff",
+    "backgroundColor": "#ffffff",
+    "borderStyle": "black",
+    "list": [
+      {
+        "pagePath": "pages/elders/elders",
+        "text": "家人"
+      },
+      {
+        "pagePath": "pages/visits/visits",
+        "text": "探视"
+      },
+      {
+        "pagePath": "pages/bills/bills",
+        "text": "账单"
+      },
+      {
+        "pagePath": "pages/care/care",
+        "text": "护理"
+      },
+      {
+        "pagePath": "pages/messages/messages",
+        "text": "消息"
+      }
+    ]
+  },
+  "permission": {},
+  "usingComponents": {}
+}

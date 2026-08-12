@@ -97,33 +97,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "recyclableRender", function() { return recyclableRender; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "components", function() { return components; });
-var components
-var render = function () {
-  var _vm = this
-  var _h = _vm.$createElement
-  var _c = _vm._self._c || _h
-  var l0 = _vm.__map(_vm.elders, function (e, __i0__) {
-    var $orig = _vm.__get_orig(e)
-    var m0 = _vm.format(e.checkInTime)
-    return {
-      $orig: $orig,
-      m0: m0,
-    }
-  })
-  var g0 = _vm.elders.length
-  _vm.$mp.data = Object.assign(
-    {},
-    {
-      $root: {
-        l0: l0,
-        g0: g0,
-      },
-    }
-  )
-}
-var recyclableRender = false
+var render = function () {}
 var staticRenderFns = []
-render._withStripped = true
+var recyclableRender
+var components
 
 
 
@@ -155,14 +132,62 @@ __webpack_require__.r(__webpack_exports__);
 "use strict";
 /* WEBPACK VAR INJECTION */(function(uni) {
 
-var _interopRequireDefault = __webpack_require__(/*! @babel/runtime/helpers/interopRequireDefault */ 2);
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.default = void 0;
-var _regenerator = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/regenerator */ 39));
-var _asyncToGenerator2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/asyncToGenerator */ 41));
 var _family = __webpack_require__(/*! @/api/family.js */ 42);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -183,45 +208,54 @@ var _family = __webpack_require__(/*! @/api/family.js */ 42);
 var _default = {
   data: function data() {
     return {
-      elders: []
+      list: [],
+      loading: false
     };
   },
+  onLoad: function onLoad() {
+    console.log('家人页面 onLoad');
+    this.loadElders();
+  },
   onShow: function onShow() {
-    this.load();
+    console.log('家人页面 onShow');
+    this.loadElders();
+  },
+  onPullDownRefresh: function onPullDownRefresh() {
+    console.log('家人页面下拉刷新');
+    this.loadElders().finally(function () {
+      uni.stopPullDownRefresh();
+    });
   },
   methods: {
-    load: function load() {
+    loadElders: function loadElders() {
       var _this = this;
-      return (0, _asyncToGenerator2.default)( /*#__PURE__*/_regenerator.default.mark(function _callee() {
-        var token;
-        return _regenerator.default.wrap(function _callee$(_context) {
-          while (1) {
-            switch (_context.prev = _context.next) {
-              case 0:
-                token = uni.getStorageSync('family_token');
-                if (token) {
-                  _context.next = 4;
-                  break;
-                }
-                uni.reLaunch({
-                  url: '/pages/login/login'
-                });
-                return _context.abrupt("return");
-              case 4:
-                _context.next = 6;
-                return (0, _family.getElders)();
-              case 6:
-                _this.elders = _context.sent;
-              case 7:
-              case "end":
-                return _context.stop();
-            }
-          }
-        }, _callee);
-      }))();
+      this.loading = true;
+      return (0, _family.getElders)().then(function (data) {
+        console.log('家人数据', data);
+        _this.list = data || [];
+      }).catch(function (err) {
+        console.error('加载家人失败', err);
+      }).finally(function () {
+        _this.loading = false;
+      });
     },
-    format: function format(t) {
-      return t ? t.replace('T', ' ') : '—';
+    sexText: function sexText(sex) {
+      return sex === 1 ? '男' : sex === 2 ? '女' : '未知';
+    },
+    statusText: function statusText(status) {
+      var map = {
+        0: '在住',
+        1: '已退住',
+        2: '待入住'
+      };
+      return map[status] || '未知';
+    },
+    statusClass: function statusClass(status) {
+      return status === 0 ? 'status-in' : status === 1 ? 'status-out' : 'status-wait';
+    },
+    maskIdCard: function maskIdCard(idCard) {
+      if (!idCard || idCard.length < 10) return idCard || '-';
+      return idCard.substring(0, 6) + '********' + idCard.substring(idCard.length - 4);
     }
   }
 };
