@@ -139,10 +139,15 @@
   font-weight: bold;
   color: #1a1a1a;
 }
+.device-grid .device-item .device-meta.data-v-f5640984 {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 8rpx;
+}
 .device-grid .device-item .device-type.data-v-f5640984 {
   font-size: 24rpx;
   color: #999;
-  margin-top: 8rpx;
 }
 .state-box.data-v-f5640984 {
   display: flex;

@@ -132,8 +132,7 @@ const _sfc_main = {
               bgColor: item.statusBg,
               color: item.statusColor,
               borderColor: item.statusBg,
-              size: "mini",
-              customStyle: "margin-top: 16rpx; display: inline-flex;"
+              size: "mini"
             }),
             e: "d" + index
           };

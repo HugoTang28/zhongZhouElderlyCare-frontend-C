@@ -55,8 +55,10 @@
           <view v-else class="device-grid">
             <view class="device-item" v-for="(item, index) in devices" :key="'d'+index">
               <view class="device-name">{{ item.deviceName }}</view>
-              <view class="device-type">{{ item.deviceType }}</view>
-              <up-tag :text="item.statusText" :bgColor="item.statusBg" :color="item.statusColor" :borderColor="item.statusBg" size="mini" customStyle="margin-top: 16rpx; display: inline-flex;"></up-tag>
+              <view class="device-meta">
+                <text class="device-type">{{ item.deviceType }}</text>
+                <up-tag :text="item.statusText" :bgColor="item.statusBg" :color="item.statusColor" :borderColor="item.statusBg" size="mini"></up-tag>
+              </view>
             </view>
           </view>
         </view>
@@ -281,10 +283,16 @@ onPullDownRefresh(() => { load().finally(() => uni.stopPullDownRefresh()) })
       color: #1a1a1a;
     }
 
+    .device-meta {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-top: 8rpx;
+    }
+
     .device-type {
       font-size: 24rpx;
       color: #999;
-      margin-top: 8rpx;
     }
   }
 }
