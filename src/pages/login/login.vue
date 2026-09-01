@@ -65,7 +65,7 @@
           <text class="dev-tip-label">开发验证码</text>
           <text class="dev-tip-code">{{ devCode }}</text>
         </view>
-        <text class="dev-tip-note">接入短信网关后该提示自动消失</text>
+        <!-- <text class="dev-tip-note">接入短信网关后该提示自动消失</text> -->
       </view>
     </view>
 
