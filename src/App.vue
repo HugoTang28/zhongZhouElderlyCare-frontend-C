@@ -1,5 +1,17 @@
-<script setup>
-// 启动初始化：登录态由各页面 onShow 统一校验
+<script>
+// 标准 uni-app App.vue：不编写模板，页面由框架注入。
+// 若写死封闭模板（如 <view id="app"></view>），H5 会出现空白页。
+export default {
+  onLaunch() {
+    console.log('App Launch')
+  },
+  onShow() {
+    console.log('App Show')
+  },
+  onHide() {
+    console.log('App Hide')
+  }
+}
 </script>
 
 <style>

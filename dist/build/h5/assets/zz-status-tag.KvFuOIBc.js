@@ -1,0 +1,1 @@
+import{_ as t,o as a,c as s,w as e,b as p,t as n,n as o,d as r}from"./index-BUHL8uIK.js";const d=t({__name:"zz-status-tag",props:{text:{type:String,default:""},type:{type:String,default:"info"}},setup:t=>(d,_)=>{const c=r;return a(),s(c,{class:o(["zz-tag","zz-tag--"+t.type])},{default:e(()=>[p(n(t.text),1)]),_:1},8,["class"])}},[["__scopeId","data-v-2e11f803"]]);export{d as _};

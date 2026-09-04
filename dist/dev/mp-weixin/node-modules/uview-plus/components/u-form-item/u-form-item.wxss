@@ -1,0 +1,69 @@
+/* uni-app 全局样式变量 */
+.u-form-item.data-v-b4fd400b {
+  display: flex;
+  flex-direction: column;
+  font-size: 14px;
+  color: var(--up-main-color, var(--u-main-color, #303133));
+}
+.u-form-item__body.data-v-b4fd400b {
+  display: flex;
+  flex-direction: row;
+  padding: 10px 0;
+}
+.u-form-item__body__left.data-v-b4fd400b {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.u-form-item__body__left__content.data-v-b4fd400b {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding-right: 10rpx;
+  flex: 1;
+}
+.u-form-item__body__left__content__icon.data-v-b4fd400b {
+  margin-right: 8rpx;
+}
+.u-form-item__body__left__content__required.data-v-b4fd400b {
+  position: absolute;
+  left: -9px;
+  color: var(--up-error, var(--u-error, #f56c6c));
+  line-height: 20px;
+  font-size: 20px;
+  top: 3px;
+}
+.u-form-item__body__left__content__label.data-v-b4fd400b {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  flex: 1;
+  color: var(--up-main-color, var(--u-main-color, #303133));
+  font-size: 15px;
+}
+.u-form-item__body__right.data-v-b4fd400b {
+  flex: 1;
+}
+.u-form-item__body__right__content.data-v-b4fd400b {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  flex: 1;
+}
+.u-form-item__body__right__content__slot.data-v-b4fd400b {
+  flex: 1;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.u-form-item__body__right__content__icon.data-v-b4fd400b {
+  margin-left: 10rpx;
+  color: var(--up-light-color, var(--u-light-color, #c0c4cc));
+  font-size: 30rpx;
+}
+.u-form-item__body__right__message.data-v-b4fd400b {
+  font-size: 12px;
+  line-height: 12px;
+  color: var(--up-error, var(--u-error, #f56c6c));
+}

@@ -1,5 +1,7 @@
 {
   "navigationBarTitleText": "我的家人",
   "enablePullDownRefresh": true,
-  "usingComponents": {}
+  "usingComponents": {
+    "zz-status-tag": "../../components/zz-status-tag/zz-status-tag"
+  }
 }

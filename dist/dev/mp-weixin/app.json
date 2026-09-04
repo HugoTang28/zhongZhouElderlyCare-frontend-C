@@ -7,6 +7,9 @@
     "pages/care/care",
     "pages/messages/messages"
   ],
+  "usingComponents": {
+    "zz-placeholder": "/components/zz-placeholder/zz-placeholder"
+  },
   "window": {
     "navigationBarTitleText": "中州养老家属端",
     "navigationBarBackgroundColor": "#3b7cff",
@@ -51,6 +54,9 @@
       }
     ]
   },
-  "permission": {},
-  "usingComponents": {}
+  "lazyCodeLoading": "requiredComponents",
+  "componentPlaceholder": {
+    "zz-status-tag": "zz-placeholder"
+  },
+  "permission": {}
 }

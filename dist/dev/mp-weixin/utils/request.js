@@ -1,6 +1,6 @@
 "use strict";
 const common_vendor = require("../common/vendor.js");
-const BASE_URL = "http://192.168.11.7:9996";
+let BASE_URL = "http://192.168.11.7:9996";
 function getToken() {
   return common_vendor.index.getStorageSync("family_token") || "";
 }

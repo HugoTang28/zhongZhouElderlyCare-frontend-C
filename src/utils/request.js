@@ -1,5 +1,8 @@
 // 后端基地址。生产环境需改为 HTTPS 备案域名；真机调试改为电脑局域网 IP（如 http://192.168.x.x:9996）
-const BASE_URL = 'http://192.168.11.7:9996'
+let BASE_URL = 'http://192.168.11.7:9996'
+// #ifdef H5
+BASE_URL = '/api'
+// #endif
 
 function getToken() {
   return uni.getStorageSync('family_token') || ''
