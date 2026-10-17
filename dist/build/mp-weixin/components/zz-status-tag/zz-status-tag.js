@@ -1,1 +1,0 @@
-"use strict";const t=require("../../common/vendor.js"),e={__name:"zz-status-tag",props:{text:{type:String,default:""},type:{type:String,default:"info"}},setup:e=>(a,n)=>({a:t.t(e.text),b:t.n("zz-tag--"+e.type)})},a=t._export_sfc(e,[["__scopeId","data-v-2e11f803"]]);wx.createComponent(a);

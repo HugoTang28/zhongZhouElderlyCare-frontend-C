@@ -6,7 +6,7 @@
 
     <!-- 品牌区 -->
     <view class="brand">
-      <image class="brand-logo" src="/static/logo.png" mode="aspectFit"></image>
+      <image class="brand-logo" src="/static/logo.png?v=2" mode="aspectFit"></image>
       <view class="brand-name">家家乐养老</view>
       <view class="brand-sub">随时了解老人在院动态</view>
     </view>
