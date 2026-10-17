@@ -7,7 +7,7 @@
     <!-- 品牌区 -->
     <view class="brand">
       <image class="brand-logo" src="/static/logo.png" mode="aspectFit"></image>
-      <view class="brand-name">中州养老</view>
+      <view class="brand-name">家家乐养老</view>
       <view class="brand-sub">随时了解老人在院动态</view>
     </view>
 
@@ -69,7 +69,7 @@
       </view>
     </view>
 
-    <view class="footer">中州养老 · 智慧康养服务平台</view>
+    <view class="footer">家家乐养老 · 智慧康养服务平台</view>
   </view>
 </template>
 

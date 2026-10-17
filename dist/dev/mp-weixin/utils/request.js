@@ -7,7 +7,7 @@ function getToken() {
 function request(url, method = "GET", data = {}) {
   return new Promise((resolve, reject) => {
     const fullUrl = BASE_URL + url;
-    console.log("[request]", method, fullUrl, data);
+    common_vendor.index.__f__("log", "at utils/request.js:18", "[request]", method, fullUrl, data);
     common_vendor.index.request({
       url: fullUrl,
       method,
@@ -17,7 +17,7 @@ function request(url, method = "GET", data = {}) {
         "Authorization": "Bearer " + getToken()
       },
       success: (res) => {
-        console.log("[response]", url, res.statusCode, res.data);
+        common_vendor.index.__f__("log", "at utils/request.js:28", "[response]", url, res.statusCode, res.data);
         const body = res.data;
         if (res.statusCode === 200 && body && body.code === 200) {
           resolve(body.data);
@@ -32,7 +32,7 @@ function request(url, method = "GET", data = {}) {
         }
       },
       fail: (err) => {
-        console.error("[request fail]", url, err);
+        common_vendor.index.__f__("error", "at utils/request.js:43", "[request fail]", url, err);
         common_vendor.index.showToast({ title: "网络异常，请稍后重试", icon: "none" });
         reject(err);
       }
@@ -47,3 +47,4 @@ function post(url, data) {
 }
 exports.get = get;
 exports.post = post;
+//# sourceMappingURL=../../.sourcemap/mp-weixin/utils/request.js.map

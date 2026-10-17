@@ -48,7 +48,7 @@ const _sfc_main = {
         }));
         balance.value = data && data.balance != null ? data.balance : 0;
       }).catch((err) => {
-        console.error("加载账单失败", err);
+        common_vendor.index.__f__("error", "at pages/bills/bills.vue:101", "加载账单失败", err);
       }).finally(() => {
         loading.value = false;
       });
@@ -122,3 +122,4 @@ const _sfc_main = {
 };
 const MiniProgramPage = /* @__PURE__ */ common_vendor._export_sfc(_sfc_main, [["__scopeId", "data-v-3b793916"]]);
 wx.createPage(MiniProgramPage);
+//# sourceMappingURL=../../../.sourcemap/mp-weixin/pages/bills/bills.js.map

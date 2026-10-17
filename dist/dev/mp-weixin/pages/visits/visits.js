@@ -40,7 +40,7 @@ const _sfc_main = {
           idCardMasked: utils_format.maskIdCard(it.idCard)
         }));
       }).catch((err) => {
-        console.error("加载探视记录失败", err);
+        common_vendor.index.__f__("error", "at pages/visits/visits.vue:86", "加载探视记录失败", err);
       }).finally(() => {
         loading.value = false;
       });
@@ -121,3 +121,4 @@ const _sfc_main = {
 };
 const MiniProgramPage = /* @__PURE__ */ common_vendor._export_sfc(_sfc_main, [["__scopeId", "data-v-367d0dd2"]]);
 wx.createPage(MiniProgramPage);
+//# sourceMappingURL=../../../.sourcemap/mp-weixin/pages/visits/visits.js.map

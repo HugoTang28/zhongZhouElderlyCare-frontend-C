@@ -12,3 +12,4 @@ function maskIdCard(id) {
 }
 exports.fmtTime = fmtTime;
 exports.maskIdCard = maskIdCard;
+//# sourceMappingURL=../../.sourcemap/mp-weixin/utils/format.js.map

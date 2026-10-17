@@ -40,7 +40,7 @@ const _sfc_main = {
           age: it.age || "-"
         }));
       }).catch((err) => {
-        console.error("加载家人失败", err);
+        common_vendor.index.__f__("error", "at pages/elders/elders.vue:99", "加载家人失败", err);
       }).finally(() => {
         loading.value = false;
       });
@@ -111,3 +111,4 @@ const _sfc_main = {
 };
 const MiniProgramPage = /* @__PURE__ */ common_vendor._export_sfc(_sfc_main, [["__scopeId", "data-v-18f9d8a6"]]);
 wx.createPage(MiniProgramPage);
+//# sourceMappingURL=../../../.sourcemap/mp-weixin/pages/elders/elders.js.map

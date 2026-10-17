@@ -11,13 +11,13 @@ if (!Math) {
 }
 const _sfc_main = {
   onLaunch() {
-    console.log("App Launch");
+    common_vendor.index.__f__("log", "at App.vue:6", "App Launch");
   },
   onShow() {
-    console.log("App Show");
+    common_vendor.index.__f__("log", "at App.vue:9", "App Show");
   },
   onHide() {
-    console.log("App Hide");
+    common_vendor.index.__f__("log", "at App.vue:12", "App Hide");
   }
 };
 const zzPlaceholder = () => "./components/zz-placeholder/zz-placeholder.js";
@@ -29,3 +29,4 @@ function createApp() {
 }
 createApp().app.mount("#app");
 exports.createApp = createApp;
+//# sourceMappingURL=../.sourcemap/mp-weixin/app.js.map

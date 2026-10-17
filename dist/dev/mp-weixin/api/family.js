@@ -32,3 +32,4 @@ exports.getElders = getElders;
 exports.getMessages = getMessages;
 exports.getVisits = getVisits;
 exports.sendCode = sendCode;
+//# sourceMappingURL=../../.sourcemap/mp-weixin/api/family.js.map

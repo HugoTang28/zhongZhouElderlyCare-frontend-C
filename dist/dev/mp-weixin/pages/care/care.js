@@ -44,7 +44,7 @@ const _sfc_main = {
           planTimeText: utils_format.fmtTime(it.planTime)
         }));
       }).catch((err) => {
-        console.error("加载护理动态失败", err);
+        common_vendor.index.__f__("error", "at pages/care/care.vue:89", "加载护理动态失败", err);
       }).finally(() => {
         loading.value = false;
       });
@@ -125,3 +125,4 @@ const _sfc_main = {
 };
 const MiniProgramPage = /* @__PURE__ */ common_vendor._export_sfc(_sfc_main, [["__scopeId", "data-v-9bfbe887"]]);
 wx.createPage(MiniProgramPage);
+//# sourceMappingURL=../../../.sourcemap/mp-weixin/pages/care/care.js.map

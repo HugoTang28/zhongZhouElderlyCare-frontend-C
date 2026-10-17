@@ -1,7 +1,7 @@
 {
   "name": "zzyl-family",
   "version": "1.0.0",
-  "description": "中州养老家属端小程序（uni-app vue3 + vite）",
+  "description": "家家乐养老家属端小程序（uni-app vue3 + vite）",
   "scripts": {
     "dev:mp-weixin": "uni -p mp-weixin",
     "build:mp-weixin": "uni build -p mp-weixin",

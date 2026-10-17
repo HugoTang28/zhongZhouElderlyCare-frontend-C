@@ -36,7 +36,7 @@ const _sfc_main = {
           cls: msgClsMap[it.msgType] || "system",
           timeText: utils_format.fmtTime(it.createTime)
         }));
-      }).catch((err) => console.error("加载消息失败", err));
+      }).catch((err) => common_vendor.index.__f__("error", "at pages/messages/messages.vue:97", "加载消息失败", err));
       const p2 = api_family.getAlarms().then((data) => {
         alarmRules.value = (data && data.rules || []).map((it) => ({
           ...it,
@@ -48,7 +48,7 @@ const _sfc_main = {
           statusBg: deviceBgMap[it.status] || "#f5f7fa",
           statusColor: deviceColorMap[it.status] || "#999"
         }));
-      }).catch((err) => console.error("加载预警失败", err));
+      }).catch((err) => common_vendor.index.__f__("error", "at pages/messages/messages.vue:110", "加载预警失败", err));
       return Promise.all([p1, p2]).finally(() => {
         loading.value = false;
       });
@@ -143,3 +143,4 @@ const _sfc_main = {
 };
 const MiniProgramPage = /* @__PURE__ */ common_vendor._export_sfc(_sfc_main, [["__scopeId", "data-v-f5640984"]]);
 wx.createPage(MiniProgramPage);
+//# sourceMappingURL=../../../.sourcemap/mp-weixin/pages/messages/messages.js.map
